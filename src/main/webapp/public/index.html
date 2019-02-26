@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html data-ng-app="AppBasket">
+<head>
+    <title>Alchemists Basketball Club &amp; Sports News HTML Template - Team</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sports Club, League and News">
+    <meta name="author" content="Maldonado Leon">
+    <meta name="keywords" content="basquetball">
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="assets/images/basketball/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/basketball/favicons/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/basketball/favicons/favicon-152.png">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+
+    <!-- Google Web Fonts
+    ================================================== -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CSource+Sans+Pro:400,700" rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Vendor CSS -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/fonts/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="assets/vendor/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link href="assets/vendor/slick/slick.css" rel="stylesheet">
+
+    <!-- Template CSS-->
+    <link href="assets/css/style-basketball.css" rel="stylesheet">
+
+    <!-- Custom CSS-->
+    <link href="assets/css/custom.css" rel="stylesheet">
+
+</head>
+<body class="template-basketball" data-ng-controller="MainController" >
+
+
+
+
+
+    <div class="site-wrapper clearfix">
+        <div class="site-overlay"></div>
+
+        <!-- Header
+    ================================================== -->
+
+        <!-- Header Mobile -->
+        <div class="header-mobile clearfix" id="header-mobile">
+            <div class="header-mobile__logo">
+                <a href="index.html"><img src="assets/images/logo.png" srcset="assets/images/logo@2x.png 2x" alt="Alchemists" class="header-mobile__logo-img"></a>
+            </div>
+            <div class="header-mobile__inner">
+                <a id="header-mobile__toggle" class="burger-menu-icon"><span class="burger-menu-icon__line"></span></a>
+                <span class="header-mobile__search-icon" id="header-mobile__search-icon"></span>
+            </div>
+        </div>
+
+        <!-- Header Desktop -->
+        <header class="header header--layout-1">
+
+            <!-- Header Top Bar -->
+            <div class="header__top-bar clearfix">
+                <div class="container">
+                    <div class="header__top-bar-inner">
+
+                        <!-- Account Navigation -->
+                        <ul class="nav-account">
+                            <li class="nav-account__item"><a href="/" >Login</a></li>
+                        </ul>
+                        <!-- Account Navigation / End -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- Header Top Bar / End -->
+
+            <!-- Header Secondary -->
+            <div class="header__secondary">
+                <div class="container">
+
+                    <!-- Header Search Form -->
+
+                    <!-- Header Search Form / End -->
+
+                    <ul class="info-block info-block--header">
+                        <li class="info-block__item info-block__item--contact-primary">
+                            <svg role="img" class="df-icon df-icon--jersey">
+                                <use xlink:href="assets/images/icons-basket.svg#jersey"/>
+                            </svg>
+                            <h6 class="info-block__heading">Únete a nuestro Equipo</h6>
+                            <a class="info-block__link" href="mailto:{{team.contact.email}}">{{team.contact.email}}</a>
+                        </li>
+                        <li class="info-block__item info-block__item--contact-secondary">
+                            <svg role="img" class="df-icon df-icon--basketball">
+                                <use xlink:href="assets/images/icons-basket.svg#basketball"/>
+                            </svg>
+                            <h6 class="info-block__heading">Contáctanos</h6>
+                            <a class="info-block__link" href="mailto:{{team.contact.email}}">{{team.contact.email}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Header Secondary / End -->
+
+            <!-- Header Primary -->
+            <div class="header__primary">
+                <div class="container">
+                    <div class="header__primary-inner">
+                        <!-- Header Logo -->
+                        <div class="header-logo">
+                            <a href="index.html"><img src="assets/images/logo.png" alt="{{team.name}}" srcset="assets/images/logo@2x.png 2x" class="header-logo__img"></a>
+                        </div>
+                        <!-- Header Logo / End -->
+
+                        <!-- Main Navigation -->
+                        <nav class="main-nav clearfix">
+                            <ul class="main-nav__list">
+                                <li class=""><a href="index.html">Inicio</a></li>
+                            </ul>
+
+                            <!-- Social Links -->
+                            <ul class="social-links social-links--inline social-links--main-nav">
+
+                                <li class="social-links__item">
+                                    <a href="#" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa fa-facebook"></i></a>
+                                </li>
+                                <li class="social-links__item">
+                                    <a href="#" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa fa-twitter"></i></a>
+                                </li>
+                                <li class="social-links__item">
+                                    <a href="#" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa fa-instagram"></i></a>
+                                </li>
+
+                            </ul>
+                            <!-- Social Links / End -->
+
+
+                        </nav>
+                        <!-- Main Navigation / End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Header Primary / End -->
+
+        </header>
+        <!-- Header / End -->
+
+        <!-- Page Heading
+    ================================================== -->
+        <div class="page-heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <h1 class="page-heading__title">{{team.name}}</h1>
+                        <ol class="page-heading__breadcrumb breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="team-overview.html">Equipos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{team.name}}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Heading / End -->
+
+
+
+        <!-- Team Pages Filter -->
+        <nav class="content-filter">
+            <div class="container">
+                <a href="#" class="content-filter__toggle"></a>
+                <ul class="content-filter__list">
+                    <li class="content-filter__item "><a href="team-overview.html" class="content-filter__link"><small>The Team</small>Info</a></li>
+                    <li class="content-filter__item "><a href="team-roster-1.html" class="content-filter__link"><small>The Team</small>Planilla</a></li>
+                    <li class="content-filter__item "><a href="team-standings.html" class="content-filter__link"><small>Tabla de </small>Posiciones</a></li>
+                    <li class="content-filter__item "><a href="team-last-results.html" class="content-filter__link"><small>The Team</small>Últimos Resultados</a></li>
+                    <li class="content-filter__item "><a href="team-schedule.html" class="content-filter__link"><small>The Team</small>Programación</a></li>
+                    <li class="content-filter__item "><a href="team-gallery.html" class="content-filter__link"><small>The Team</small>Gallery</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Team Pages Filter / End -->
+
+
+        <div class="site-content" data-ng-view >
+        </div>
+
+
+
+        <!-- Footer
+   ================================================== -->
+        <footer id="footer" class="footer">
+
+            <!-- Footer Widgets -->
+            <div class="footer-widgets">
+                <div class="footer-widgets__inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3">
+                                <div class="footer-col-inner">
+
+                                    <!-- Footer Logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="assets/images/logo.png" srcset="assets/images/logo@2x.png 2x" alt="Alchemists" class="footer-logo__img"></a>
+                                    </div>
+                                    <!-- Footer Logo / End -->
+
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-md-3">
+                                <div class="footer-col-inner">
+                                    <!-- Widget: Contact Info -->
+                                    <div class="widget widget--footer widget-contact-info">
+                                        <h4 class="widget__title">Contact Info</h4>
+                                        <div class="widget__content">
+                                            <div class="widget-contact-info__desc">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                                            </div>
+                                            <div class="widget-contact-info__body info-block">
+                                                <div class="info-block__item">
+                                                    <svg role="img" class="df-icon df-icon--basketball">
+                                                        <use xlink:href="assets/images/icons-basket.svg#basketball"/>
+                                                    </svg>
+                                                    <h6 class="info-block__heading">Contact Us</h6>
+                                                    <a class="info-block__link" href="mailto:tryouts@alchemists.com">tryouts@alchemists.com</a>
+                                                </div>
+                                                <div class="info-block__item">
+                                                    <svg role="img" class="df-icon df-icon--jersey">
+                                                        <use xlink:href="assets/images/icons-basket.svg#jersey"/>
+                                                    </svg>
+                                                    <h6 class="info-block__heading">Join Our Team!</h6>
+                                                    <a class="info-block__link" href="mailto:info@alchemists.com">info@alchemists.com</a>
+                                                </div>
+                                                <div class="info-block__item info-block__item--nopadding">
+                                                    <ul class="social-links">
+
+                                                        <li class="social-links__item">
+                                                            <a href="#" class="social-links__link"><i class="fa fa-facebook"></i> Facebook</a>
+                                                        </li>
+                                                        <li class="social-links__item">
+                                                            <a href="#" class="social-links__link"><i class="fa fa-twitter"></i> Twitter</a>
+                                                        </li>
+                                                        <li class="social-links__item">
+                                                            <a href="#" class="social-links__link"><i class="fa fa-instagram"></i> Instagram</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Widget: Contact Info / End -->
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-md-3">
+
+                            </div>
+                            <div class="col-sm-4 col-md-3">
+                                <div class="footer-col-inner">
+
+                                    <!-- Widget: Instagram -->
+                                    <div class="widget widget--footer widget-instagram">
+                                        <h4 class="widget__title">Instagram Widget</h4>
+                                        <div class="widget__content">
+                                            <ul id="instagram-feed" class="widget-instagram__list"></ul>
+                                            <a href="https://www.instagram.com/dan.fisher.dev" class="btn btn-sm btn-instagram btn-icon-right">Follow Our Instagram <i class="icon-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Widget: Instagram / End -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Widgets / End -->
+
+            <!-- Footer Secondary -->
+
+
+            <!-- Footer Secondary / End -->
+        </footer>
+        <!-- Footer / End -->
+    </div>
+
+
+
+<!-- Javascript Files
+================================================== -->
+<!-- Core JS -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/jquery/jquery-migrate.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="assets/js/core.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-touch.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js"></script>
+
+<!-- Template JS -->
+<script src="assets/js/init.js"></script>
+<script src="assets/js/custom.js"></script>
+
+<script type="text/javascript" src="js/Application.js"></script>
+
+<script type="text/javascript" src="js/controllers/MainController.js"></script>
+<script type="text/javascript" src="js/controllers/TeamController.js"></script>
+<script type="text/javascript" src="js/controllers/TeamProfileController.js"></script>
+<script type="text/javascript" src="js/controllers/TeamRosterController.js"></script>
+
+</body>
+</html>

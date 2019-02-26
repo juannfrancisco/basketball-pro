@@ -1,0 +1,58 @@
+<section id="main" role="main" >
+	<div class="container-fluid">
+        <div class="page-header page-header-block">
+            <div class="page-header-section hidden-xs">
+                <h4 class="title semibold ">{{title}}</h4>
+            </div>
+            <div class="page-header-section">
+            		<div class="row hidden-sm hidden-md hidden-lg">
+            			<div class="col-md-3 col-xs-3 pl15" >
+              			<a href="#/{{nameObjects}}" class="btn btn-primary btn-outline mb5">Volver</a>
+	              	</div>
+	              	<div class="col-md-6 col-xs-9" >
+	              		<h4 class="title semibold">Nuevo {{title}}</h4>
+	              	</div>
+	              	<div class="col-md-3 col-xs-3" >
+	              		
+	              	</div>
+            		</div>
+            	
+                <div class="toolbar hidden-xs hidden-sm">
+                    <ol class="breadcrumb breadcrumb-transparent nm">
+                        <li><a href="#/">Home</a></li>
+                        <li><a href="#/{{nameObjects}}">{{title}}s</a></li>
+                        <li class="active">Nuevo {{title}}</li>
+                    </ol>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="row">
+			<div class="col-md-6">
+				<form class="form-horizontal form-bordered" id="form-crear-equipo">
+						<div class="form-group">
+	                          <label class="col-sm-3 control-label">Nombre</label>
+	                          <div class="col-sm-9">
+	                              <input type="text" class="form-control" ng-model="object.name"
+	                              data-parsley-required>
+	                          </div>
+	                      </div>
+	                      <div class="form-group">
+	                          <label class="col-sm-3 control-label">Descripción</label>
+	                          <div class="col-sm-9">
+	                              <textarea class="form-control" ng-model="object.description"
+	                               data-parsley-required></textarea>
+	                          </div>
+	                      </div>
+	                      <div class="form-group">
+	                      		<div class="col-sm-12">
+	                      			<button class="btn btn-success btn-block mt15 mb15"  value="button" ng-click="save()">Guardar</button>
+	                      		</div>
+	                      </div>
+	                      <div ng-show="diplayError" class="alert alert-danger">{{errorMsg}}</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

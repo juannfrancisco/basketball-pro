@@ -1,0 +1,190 @@
+<section id="main" role="main" >
+	<div class="container-fluid">
+		<div ng-show="!flagLoading" >
+			<section class="jumbotron jumbotron-bg11 mt-15 mb15 mr-15 ml-15" data-stellar-background-ratio="0.4" 
+			style="background-position: 50% 30px; background-image: url('../image/stellar/background8.jpg') !important; ">
+			    <div class="overlay pattern pattern10"></div>
+			    <div class="container" >
+			    		<div class="match-profile-header row mt20 mb20" >
+			    			<div class="team col-xs-6 col-md-4 text-center" >
+			    				<div class="locale">Local</div>
+			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" width="120px" alt="Cover" class="unveiled img-rounded">
+	                       	 <div class="name">{{match.local.name}}</div>
+			    			</div>
+			    			<div class="col-md-4 col-xs-12 text-center hidden-xs hidden-sm"> 
+								<div class="widget panel">
+		                            <div class="panel-body"  ng-class="{'bgcolor-success':stateWatch=='play', 'bgcolor-warning':stateWatch=='pause', 'bgcolor-default':stateWatch=='stop' }" >
+		                                <ul class="list-unstyled mt15 mb15">
+		                                    <li class="text-center fsize24">
+		                                        <i class="ico-clock2"></i> {{timetext}}
+		                                    </li>
+		                                    <li class="text-center">
+		                                        <h5 class="semibold mb0">{{quarter.length}}er Cuarto</h5>
+		                                        <span>--</span>
+		                                    </li>
+		                                </ul>
+		                            </div>
+		                            <div class="panel-body">
+		                            	<div class="btn-group" role="group">
+		                            	  <button type="button" class="btn btn-default" ng-click="logQuarter()">
+										  	<h5 class="nm"><i class="ico-list"></i></h5>
+		                                  	<p class="nm">log</p>
+										  </button>
+										  <button type="button" class="btn btn-success" ng-click="startCount()" ng-disabled="stateWatch=='play' || (!match.visitor.formacion && !match.local.formacion)">
+										  	<h5 class="nm"><i class="ico-play3"></i></h5>
+		                                  	<p class="nm">Iniciar</p>
+										  </button>
+										  <button type="button" class="btn btn-default" ng-click="pauseCount()" ng-disabled="stateWatch=='pause' || stateWatch=='stop'">
+										  	<h5 class="nm"><i class="ico-pause"></i></h5>
+ 		                                    <p class="nm">Pausar</p> 
+										  </button>
+										  <button type="button" class="btn btn-default" ng-click="stopCount()" ng-disabled="stateWatch=='stop'">
+										  	<h5 class="nm"><i class="ico-stop"></i></h5>
+                                           	<p class="nm">Detener</p>
+										  </button>
+										</div>
+		                            </div>
+		                        </div>
+							</div>
+			    			<div class="team col-xs-6 col-md-4 text-center" >
+			    				<div class="locale" >Visita</div>
+			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" width="120px" alt="Cover" class="unveiled img-rounded">
+	                       	 <div class="name">{{match.visitor.name}}</div>
+			    			</div>
+			    		</div>
+			    </div>
+			</section>
+			
+			<div class="row" >
+				<div ng-show="match.state=='PENDING'" >
+					<div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
+		        	 	<div class="col-xs-6 col-md-4 text-center fsize24">
+		        	 		<i class=" ico-seven-segment{{scoreText.local.d1}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.local.d2}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.local.d3}}" ></i> 
+		        	 	</div>
+		        	 	<div class="col-md-4 text-center hidden-xs hidden-sm">
+		        	 	
+		        	 	</div>
+		        	 	<div class="col-xs-6 col-md-4 text-center fsize24"> 
+		        	 		<i class=" ico-seven-segment{{scoreText.visitor.d1}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.visitor.d2}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.visitor.d3}}" ></i>
+		        	 	</div>
+		        	 </div>
+				
+		        	 <div class="row pb15 pt15 hidden-md hidden-lg" style="border-bottom:1px solid #EBEBEB;" >
+						<div class="col-md-4 col-xs-12 text-center "> 
+							<div class="widget panel">
+	                            <div class="panel-body"  ng-class="{'bgcolor-success':stateWatch=='play', 'bgcolor-warning':stateWatch=='pause', 'bgcolor-default':stateWatch=='stop' }" >
+	                                <ul class="list-unstyled mt15 mb15">
+	                                    <li class="text-center fsize24">
+	                                        <i class="ico-clock2"></i> {{timetext}}
+	                                    </li>
+	                                    <li class="text-center">
+	                                        <h5 class="semibold mb0">1er Cuarto</h5>
+	                                        <span>--</span>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                            <div class="panel-body">
+	                                <div class="btn-group" role="group">
+									  <button type="button" class="btn btn-default" ng-click="startCount()" ng-disabled="stateWatch=='play'">
+									  	<h5 class="nm"><i class="ico-play3"></i></h5>
+	                                  	<p class="nm">Iniciar</p>
+									  </button>
+									  <button type="button" class="btn btn-default" ng-click="pauseCount()" ng-disabled="stateWatch=='pause' || stateWatch=='stop'">
+									  	<h5 class="nm"><i class="ico-pause"></i></h5>
+		                                    <p class="nm">Pausar</p> 
+									  </button>
+									  <button type="button" class="btn btn-default" ng-click="stopCount()" ng-disabled="stateWatch=='stop'">
+									  	<h5 class="nm"><i class="ico-stop"></i></h5>
+                                          	<p class="nm">Detener</p>
+									  </button>
+									</div>
+	                            </div>
+	                        </div>
+						</div>
+						<div class="col-md-8 ">
+							<div class="menu-match row pl10 pr10 pt10  pb15" style="border-bottom:1px solid #EBEBEB;">
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5"
+				        					ng-click="addCrew()">
+				        				<i class="ico-group"></i>
+				        				<div>Formación</div>
+				        			</button>
+				        		</div>
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='stop' || stateWatch=='pause'"
+				        				 data-target="#modal-add-point" data-toggle="modal" >
+					        			<i class="ico-screenshot"></i>
+					        			<div>Punto</div>
+				        			</button>
+				        		</div>
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='stop' || stateWatch=='pause'">
+					        			<i class="ico-bubble-blocked"></i>
+					        			<div>Falta</div>
+				        			</button>
+				        		</div>
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='stop' || stateWatch=='pause'">
+					        			<i class="ico-watch"></i>
+					        			<div>Minuto</div>
+				        			</button>
+				        		</div>
+				        	</div>
+						</div>
+		        	</div>
+		        	
+		        	<div class="row">
+		        		<div class="col-md-6 col-sm-6">
+		        			<div class="list-group ma15" style="border:1px solid silver">
+			        			<div class="list-group-header">
+			        				<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-success" ng-disabled="match.local.formacion" ng-click="addCrew('local')"><i class="ico-align-justify"></i> Formación</button>
+                                        <button type="button" class="btn btn-sm btn-default" ng-disabled="stateWatch!='play'"><i class="ico-watch"></i> Minuto</button>
+                                    </div>
+			        			</div>
+			        			<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!match.local.formacion">
+									<span class="media-text ellipsis nm">No se han asignado jugadores a la formacion.</span>
+								</div>
+			        			<a class="list-group-item " ng-repeat="player in match.local.players " href="javascript:void(0)" ng-click="optionPlayer(player, 'local' )" ng-show="player.titular">
+									<span class="pull-left avatar mr10">
+										<span class="badge badge-number-player">{{player.number}}</span>
+						            </span>
+						            <div class="clearfix" >
+										<strong>{{player.name}} {{player.lastName}}</strong>
+										<div>{{msgI18n(player.position)}}</div>
+						            </div>
+								</a>
+		        			</div>
+		        		</div>
+		        		<div class="col-md-6 col-sm-6">
+		        			<div class="list-group ma15" style="border:1px solid silver">
+		        				<div class="list-group-header">
+			        				<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-success" ng-disabled="match.visitor.formacion" ng-click="addCrew('visitor')"> <i class="ico-align-justify"></i> Formación</button>
+                                        <button type="button" class="btn btn-sm btn-default" ng-disabled="stateWatch!='play'"> <i class="ico-watch"></i> Minuto</button>
+                                    </div>
+			        			</div>
+			        			<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!match.visitor.formacion">
+									<span class="media-text ellipsis nm">No se han asignado jugadores a la formacion.</span>
+								</div>
+			        			<a class="list-group-item " ng-repeat="player in match.visitor.players " href="javascript:void(0)" ng-click="optionPlayer(player,'visitor')" ng-show="player.titular">
+									<span class="pull-left avatar mr10">
+										<span class="badge badge-number-player">{{player.number}}</span>
+						            </span>
+						            <div class="clearfix" >
+										<strong>{{player.name}} {{player.lastName}}</strong>
+										<div>{{msgI18n(player.position)}}</div>
+						            </div>
+								</a>
+							</div>
+		        		</div>
+		        	</div>
+	        	</div>
+			</div>
+        </div>
+	</div>
+</section>

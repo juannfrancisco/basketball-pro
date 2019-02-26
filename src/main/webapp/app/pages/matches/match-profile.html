@@ -1,0 +1,45 @@
+<section id="main" role="main" >
+	<div class="container-fluid">
+		<div ng-show="!flagLoading" >
+			<section class="jumbotron jumbotron-bg11 mt-15 mb15 mr-15 ml-15" data-stellar-background-ratio="0.4" 
+			style="background-position: 50% 30px; background-image: url('../image/stellar/background8.jpg') !important; ">
+			    <div class="overlay pattern pattern10"></div>
+			    <div class="container" >
+			    		<div class="match-profile-header row mt10" >
+			    			<div class="team col-xs-6 text-center" >
+			    				<div class="locale">Local</div>
+			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
+	                       	 alt="Cover" class="unveiled img-rounded">
+	                       	 <div class="name">{{match.local.name}}</div>
+			    			</div>
+			    			<div class="team col-xs-6 text-center" >
+			    				<div class="locale" >Visita</div>
+			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
+	                       	 alt="Cover" class="unveiled img-rounded">
+	                       	 <div class="name">{{match.visitor.name}}</div>
+			    			</div>
+			    		</div>
+			    </div>
+			</section>            
+	        
+	        	<div ng-show="match.state=='PENDING'" >
+		        	 <div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
+		        	 	<div class="col-xs-12 text-center"> 
+		        	 		<button class="btn btn-success btn-block"  value="button" ng-click="ref('/match/'+match.oid+'/playing')">Inicar Partido</button>
+		        	 	</div>
+		        	 </div>
+		        	 
+		        	 <div class="row pb15 pt15" style="border-bottom:1px solid #EBEBEB;" >
+					<div class="col-xs-6 text-center"> <i class="ico-calendar"></i> {{match.date | date}}</div>
+					<div class="col-xs-6 text-center"> <i class="ico-time"></i> {{match.date | date :'HH:mm:ss'}}</div>
+		        	</div>
+	        	</div>
+	        	
+	        	
+        </div>
+	</div>
+</section>
+        <script>
+$.stellar({horizontalScrolling: false});
+</script>
+

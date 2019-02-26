@@ -1,0 +1,173 @@
+<section id="main" role="main" >
+	<div class="container-fluid">
+<div ng-show="!flagLoading" >
+	<section class="jumbotron jumbotron-bg11 mt-15 mb15 mr-15 ml-15" data-stellar-background-ratio="0.4" 
+		style="min-height: 320px;background-image: url('../image/stellar/background9.jpg') !important; ">
+		    <div class="overlay pattern pattern10"></div>
+		    <div class="container">
+		    
+		    		<div class="row pt15">
+					<div class="col-md-3 col-xs-3 pl15" >
+		           		<a href="#/team/{{player.currentTeam.oid}}/players" class="btn btn-primary btn-outline mb5">Volver</a>
+		            	</div>
+		            	<div class="col-md-6 col-xs-6" >
+		            		<h4 class="title semibold"></h4>
+		            	</div>
+		            	<div class="col-md-3 col-xs-3 text-right" >
+		            		<a href="#/team/{{team.oid}}/players/{{player.oid}}/edit" class="btn btn-primary btn-outline mb5">Editar</a>
+		            	</div>
+		         </div>
+		    
+		    
+		        <div style="margin: auto; width: 150px;">
+		        		<img data-toggle="unveil" ng-src="../image/avatar/avatar.png" 
+                       	 alt="Cover" width="150px" class="unveiled img-rounded" ></div>
+                		<h1 class="thin text-white text-center font-alt">{{player.name}} {{player.lastName}}</h1>
+		        		<div class="text-center pt15">
+		        </div>
+		        
+		    </div>
+	</section>
+    
+    
+    <div class="page-header page-header-block mb0 hidden-xs hidden-sm">
+        <div class="page-header-section">
+            <h4 class="title semibold hidden-xs hidden-sm">{{player.name}} {{player.lastName}}</h4>
+        </div>
+        <div class="page-header-section">
+            <div class="toolbar">
+                <ol class="breadcrumb breadcrumb-transparent nm">
+                    <li><a href="#/">Home</a></li>
+                    <li><a href="#/players">Todos los Jugadores</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+	
+		<div class="row">
+			
+			<div class="col-md-6" >
+				<div class="panel mt10" >
+					<div class="panel-heading pt10">
+                       <div class="panel-toolbar">
+                           <h4 class="semibold nm ellipsis">Información Básica</h4>
+                       </div>
+                   </div>
+                   <div class="panel-body pt0" >
+                   		<div class="row pr10 pl10 text-center">
+							<div class="col-md-6 col-xs-6"> 
+								<div style="font-size:30px;font-weight:bold;color:gray;">
+							 	{{player.height}} m</div>
+							 	<div>Estatura</div>
+							 </div>
+							<div class="col-md-6 col-xs-6"> 
+							 	<div  style="font-size:30px;font-weight:bold;color:gray;">
+							 		{{player.weight}} kg</div>
+							 	<div>Peso</div>
+							 </div>
+						</div>
+						<hr/>
+						<div class="row pr10 pl10 text-center">
+							<div class="col-md-6 col-xs-6"> 
+								<div style="font-size:30px; font-weight:bold;color:gray;">
+							 		{{msgI18n(player.position)}} </div>
+							 	<div>Posicion</div>
+							 </div>
+							<div class="col-md-6 col-xs-6"> 
+								<div style="font-size:30px; font-weight:bold;color:gray;">
+							 		{{player.number}} </div>
+						 		<div>Nº Camiseta</div>
+							 </div>
+						</div>
+						<hr/>
+						<div class="row mb10 mt10 pr10 pl10 text-center">
+							<div class="col-md-6 col-xs-6">
+								<div style="font-size:30px; font-weight:bold;color:gray;">
+									<i class="ico-{{player.gender | lowercase}}"></i></div>
+								<div>Genero </div>
+							</div>
+							<div class="col-md-6 col-xs-6">
+								<div style="font-size:30px; font-weight:bold;color:gray;">
+									{{player.age}} años</div> ({{player.birthdate | date}})  
+							</div>
+						</div>
+                   </div>
+				</div>
+			</div>
+			
+			<div class="col-md-6" >
+				<div class="panel mt10" >
+                   <div class="panel-body">
+                                    <h4 class="semibold nm"><i class="ico-calculate2 mr5"></i>Conversion Rate</h4>
+                                    <h2 class="thin mt5 text-muted"><span data-toggle="counterup">10.543</span>%</h2>
+                                    <!-- chart -->
+                                    <div class="chart" style="height: 120px; padding: 0px; position: relative;" id="stats3"><canvas class="flot-base" width="506" height="240" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 253px; height: 120px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 50px; top: 104px; left: 8px; text-align: center;">Mon</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 50px; top: 104px; left: 65px; text-align: center;">Tue</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 50px; top: 104px; left: 119px; text-align: center;">Wed</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 50px; top: 104px; left: 176px; text-align: center;">Thu</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 50px; top: 104px; left: 235px; text-align: center;">Fri</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 92px; left: 8px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 69px; left: 8px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 47px; left: 1px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 25px; left: 1px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 3px; left: 1px; text-align: right;">20</div></div></div><canvas class="flot-overlay" width="506" height="240" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 253px; height: 120px;"></canvas></div>
+                                    <!--/ chart -->
+                   </div>
+                 </div> 
+                  
+			</div>
+		
+		</div>
+		        
+<!--         <div class="row" > -->
+<!-- 	        <ul class="nav nav-tabs nav-justified"> -->
+<!-- 			  <li role="presentation" class="active"> -->
+<!-- 			  	<a data-toggle="tab" aria-expanded="true" data-target="#info" >Info</a></li> -->
+<!-- 			  <li role="presentation"> -->
+<!-- 			  	<a data-toggle="tab" aria-expanded="true" data-target="#players">Estadisticas</a></li> -->
+<!-- 			  <li role="presentation"> -->
+<!-- 			  	<a data-toggle="tab" aria-expanded="true" data-target="#staff">Skills</a></li> -->
+<!-- 			</ul> -->
+			
+<!-- 			<div class="tab-content panel" > -->
+<!-- 				<div class="tab-pane np pt15 pb15 mh400 active" id="info" > -->
+<!-- 					<div class="row pr10 pl10 text-center"> -->
+<!-- 						<div class="col-md-6 col-xs-6">  -->
+<!-- 							<div style="font-size:30px;font-weight:bold;color:gray;"> -->
+<!-- 						 	{{player.height}} m</div> -->
+<!-- 						 	<div>Estatura</div> -->
+<!-- 						 </div> -->
+<!-- 						<div class="col-md-6 col-xs-6">  -->
+<!-- 						 	<div  style="font-size:30px;font-weight:bold;color:gray;"> -->
+<!-- 						 		{{player.weight}} kg</div> -->
+<!-- 						 	<div>Peso</div> -->
+<!-- 						 </div> -->
+<!-- 					</div> -->
+<!-- 					<hr/> -->
+<!-- 					<div class="row pr10 pl10 text-center"> -->
+<!-- 						<div class="col-md-6 col-xs-6">  -->
+<!-- 							<div style="font-size:30px; font-weight:bold;color:gray;"> -->
+<!-- 						 		{{msgI18n(player.position)}} </div> -->
+<!-- 						 	<div>Posicion</div> -->
+<!-- 						 </div> -->
+<!-- 						<div class="col-md-6 col-xs-6">  -->
+<!-- 							<div style="font-size:30px; font-weight:bold;color:gray;"> -->
+<!-- 						 		{{player.number}} </div> -->
+<!-- 					 		<div>Nº Camiseta</div> -->
+<!-- 						 </div> -->
+<!-- 					</div> -->
+<!-- 					<hr/> -->
+<!-- 					<div class="row mb10 mt10 pr10 pl10 text-center"> -->
+<!-- 						<div class="col-md-6"> -->
+<!-- 							<div style="font-size:30px; font-weight:bold;color:gray;"> -->
+<!-- 								<i class="ico-{{player.gender | lowercase}}"></i></div> -->
+<!-- 							<div>Genero </div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 				<div class="tab-pane np pt15 pb15 mh400" id="players" > -->
+<!-- 				</div> -->
+				
+<!-- 				<div class="tab-pane np pt15 pb15 mh400" id="staff" > -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!--         	</div> -->
+        </div>
+	</div>
+</section>
+ <script>
+	$.stellar({horizontalScrolling: false});
+</script>
+

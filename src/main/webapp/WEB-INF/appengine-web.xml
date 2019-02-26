@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <runtime>java8</runtime>
+    <threadsafe>true</threadsafe>
+    <system-properties>
+        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    </system-properties>
+
+    <env-variables>
+        <env-var name="jdbc_username" value="root" />
+        <env-var name="jdbc_password" value="M7auaspxsJhMvDyh" />
+        <env-var name="jdbc_url" value="jdbc:mysql://google/db_basketball?cloudSqlInstance=basket-analytics-232302:us-central1:dbbasket=com.google.cloud.sql.mysql.SocketFactory" />
+        <!-- jdbc:mysql://google/db_basketball?cloudSqlInstance=basket-analytics-232302:us-central1:dbbasket=com.google.cloud.sql.mysql.SocketFactory -->
+
+    </env-variables>
+
+</appengine-web-app>

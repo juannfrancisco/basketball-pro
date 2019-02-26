@@ -1,0 +1,58 @@
+
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">×</button>
+    <h3 class="semibold modal-title">{{player.name}} {{player.lastName}}</h3>
+</div>
+<div class="modal-body">
+	
+<!-- 	<div class="row"> -->
+<!-- 		<div class="pa15 pb0"> -->
+<!-- 			<h4><i class="ico-bubble-blocked"></i> Falta</h4> -->
+<!-- 		</div> -->
+<!-- 		<div class="menu-match row pa15" style="border-bottom:1px solid #EBEBEB;"> -->
+<!--       		<div class="item-menu col-xs-6 col-sm-4 mb10 mt10"> -->
+<!--       			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-click="changePlayer()" > -->
+<!--       				<div>Falta <br/> Personal</div> -->
+<!--       			</button> -->
+<!--       		</div> -->
+<!--       		<div class="item-menu col-xs-6 col-sm-4 mb10 mt10"> -->
+<!--       			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-click="addPlayer()"> -->
+<!--        				<div>Falta <br/>Tecnica</div> -->
+<!--       			</button> -->
+<!--       		</div> -->
+<!--       		<div class="item-menu col-xs-6 col-sm-4 mb10 mt10"> -->
+<!--       			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-click="addFoul()"> -->
+<!-- 	       			<div>Falta <br/>Antideportiva</div> -->
+<!--       			</button> -->
+<!--       		</div> -->
+<!--       	</div> -->
+<!-- 	</div> -->
+	
+	
+	<div class="row">
+		<div class="pa15 pb0">
+			<h4><i class="ico-screenshot"></i> Puntos</h4>
+		</div>
+		<div class="menu-match row pa15" style="border-bottom:1px solid #EBEBEB;">
+      		<div class="item-menu col-xs-6 col-sm-4 mb10 mt10">
+      			<button type="button" class="btn btn-primary btn-block mb5" ng-click="addPoint(1)" >
+      				<div> <h4 class="np nm" >1</h4> punto</div>
+      			</button>
+      		</div>
+      		<div class="item-menu col-xs-6 col-sm-4 mb10 mt10">
+      			<button type="button" class="btn btn-primary btn-block mb5" ng-click="addPoint(2)">
+       				<div> <h4 class="np nm" >2</h4> puntos</div>
+      			</button>
+      		</div>
+      		<div class="item-menu col-xs-6 col-sm-4 mb10 mt10">
+      			<button type="button" class="btn btn-primary btn-block mb5" ng-click="addPoint(3)">
+	       			<div> <h4 class="np nm" >3</h4> puntos</div>
+      			</button>
+      		</div>
+      	</div>
+	</div>
+	
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-success btn-lg" ng-click="close()">Cerrar</button>
+</div>

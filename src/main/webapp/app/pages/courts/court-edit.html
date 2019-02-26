@@ -1,0 +1,87 @@
+<section id="main" role="main" >
+	<div class="container-fluid">
+<div ng-show="!flagLoading && !flagErrorLoading" >
+	<div class="page-header page-header-block mb0">
+            <div class="page-header-section">
+            		<div class="row hidden-sm hidden-md hidden-lg">
+            			<div class="col-md-3 col-xs-3 pl15" >
+              			<a href="#/court/{{court.oid}}" class="btn btn-primary btn-outline mb5">Volver</a>
+	              	</div>
+	              	<div class="col-md-6 col-xs-6" >
+	              		<h4 class="title semibold">Editar Cancha</h4>
+	              	</div>
+	              	<div class="col-md-3 col-xs-3" >
+	              		
+	              	</div>
+            		</div>
+                <div class="toolbar hidden-xs hidden-sm">
+                    <ol class="breadcrumb breadcrumb-transparent nm">
+                        <li><a href="#/">Home</a></li>
+                        <li><a href="#/courts">Canchas</a></li>
+                        <li class="active">Editar Cancha</li>
+                    </ol>
+                </div>
+            </div>
+    </div>
+        
+        
+        
+        <div class="row" >
+					<form class="form-horizontal form-bordered pr15 pl15" id="form-editar-equipo">
+			        			<div class="form-group">
+			                    <label class="col-sm-3 control-label">Nombre</label>
+			                    <div class="col-sm-9">
+			                        <input type="text" class="form-control" ng-model="court.name"
+			                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese el nombre del equipo" data-parsley-required>
+			                    </div>
+			                </div>
+			                
+			                <div class="form-group">
+			                    <label class="col-sm-3 control-label">Descripcion</label>
+			                    <div class="col-sm-9">
+			                        <textarea class="form-control" ng-model="court.description"
+			                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese una descripcion" data-parsley-required></textarea>
+			                    </div>
+			                </div>
+			                <div class="form-group">
+			                    <label class="col-sm-3 control-label">Cantidad Espectadores</label>
+			                    <div class="col-sm-9">
+			                        <input type="number" class="form-control" ng-model="court.spectators"
+			                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese el nombre del equipo" data-parsley-required>
+			                    </div>
+			                </div>
+			                <div class="form-group">
+                                 <label class=" col-sm-3 control-label">Localizacion</label>
+                                 <div class="row pl15 pr15">
+                                 		<div class="col-sm-6 col-xs-6">
+                                      <input type="number" class="form-control" ng-model="court.location.latitude"
+                                      data-parsley-errors-container="#error-container" data-parsley-required>
+                                  </div>
+                                  <div class="col-sm-6 col-xs-6">
+                                      <input type="number" class="form-control" ng-model="court.location.longitude"
+                                      data-parsley-errors-container="#error-container" data-parsley-required>
+                                  </div>
+                                 </div>
+                                 
+                             </div>
+			                	<div class="form-group">
+			                		<div class="col-md-12 text-right pt5 pb0">
+				        				<button class="btn btn-success btn-block mt15 mb15"  value="button"  ng-click="update()">Guardar</button>
+				        				
+				        				<button class="btn btn-danger btn-block mt15 mb15"  value="button"  ng-click="update()">Eliminar</button>
+				        				
+				        			</div>
+			                	</div>
+		                </form>
+        </div>
+</div>
+
+
+<div class="row" ng-show="flagErrorLoading" >
+	<div class="col-md-12 mb20 mt20 text-center ">
+		<strong style="color:gray;">Ocurrio un error al cargar la información, intente más tarde</strong>
+		<div><i style="font-size:100px;color: #EBEBEB;" class=" ico-heart-broken mb20 mt20"  ></i></div>
+	</div>
+</div>
+</div>
+</section>

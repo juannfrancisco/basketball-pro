@@ -1,0 +1,59 @@
+
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">×</button>
+    <h3 class="semibold modal-title">Formación {{totalSelected}}</h3>
+</div>
+<div class="modal-body">
+	
+	<div class="row" style="padding:10px;" ng-show="!selectedTeam">
+		<h5 class="title" >Selecciona el equipo que desear agregar la formacion</h5>
+		<div class="row"  >
+			<div class="col-xs-6 text-center">
+				<div class="btn btn-default btn-block" ng-click="selectTeam(match.local)" >
+					<div class="locale">Local</div>
+					<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" width="100px"
+					             	 alt="Cover" class="unveiled img-rounded mt10 mb10">
+	             	<div class="bold name">{{match.local.name}}</div>
+             	</div>
+			</div>
+            	 
+			<div class="col-xs-6 text-center">
+				<div class="btn btn-default btn-block" ng-click="selectTeam(match.visitor)" >
+					<div class="locale" >Visita</div>
+					<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" width="100px"
+	             	 	alt="Cover" class="unveiled img-rounded mt10 mb10" >
+					<div class="bold name">{{match.visitor.name}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	  			
+    <div class="list-group" ng-show="selectedTeam" >
+    	<div class="mb10 mt10">
+    		<input type="text" class="form-control" ng-model="q" placeholder="Buscar jugador">
+    	</div>
+		<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!players || players.length==0">
+			<span class="media-text ellipsis nm">No se han asignado jugadores al equipo.</span>
+		</div>
+	
+		<a class="list-group-item " ng-repeat="player in players | filter:q as results" href="javascript:void(0)" ng-click="selectPlayer(player)">
+			<span class="badge badge-titular">{{player.titular? 'titular' : ''}}</span>
+			<span class="pull-left avatar mr10">
+				<span class="badge badge-number-player">{{player.number}}</span>
+            </span>
+            <div class="clearfix" >
+				<strong>{{player.name}} {{player.lastName}}</strong>
+				<div>{{msgI18n(player.position)}}</div>
+            </div>
+		</a>
+	</div>
+      			
+      		
+      </div>
+      <div class="modal-footer">
+      		<button type="button" 
+      		class="btn btn-success btn-lg btn-block" 
+      		ng-click="addCrew()"
+      		ng-disabled="totalSelected<4"
+      		>Agregar</button>
+      </div>

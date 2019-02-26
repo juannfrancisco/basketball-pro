@@ -31,6 +31,18 @@
     <relativePath/>
   </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-gcp-dependencies</artifactId>
+                <version>1.0.0.RC1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
   <dependencies>
     <!-- Compile/runtime dependencies -->
     <dependency>
@@ -53,11 +65,12 @@
       <version>2.0.4.RELEASE</version>
     </dependency>
 
+<!--
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-gcp-starter-sql</artifactId>
+      <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
     </dependency>
-
+-->
     <dependency>
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger2</artifactId>
@@ -214,4 +227,13 @@
 
     </plugins>
   </build>
+
+    <repositories>
+        <!-- Use Spring Milestone Repository -->
+        <repository>
+            <id>repository.spring.milestone</id>
+            <name>Spring Milestones Repository</name>
+            <url>http://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 </project>

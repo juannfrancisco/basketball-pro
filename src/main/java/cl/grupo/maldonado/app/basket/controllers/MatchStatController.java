@@ -32,27 +32,16 @@ import java.util.List;
  * Estadisticas de Deportes - Basketball
  */
 @RestController
-@RequestMapping("/api/v1/matches")
-public class MatchRest {
+@RequestMapping("/api/v1/matchstats")
+public class MatchStatController {
 
 
 	@Autowired
-	private MatchService service;
+	private MatchStatService service;
 
-
-
-	@Autowired
-	private MatchStatService matchStatService;
-
-
-
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Match> listAll(){
-		return service.listAll();
-	}
 
 	@RequestMapping(method = RequestMethod.GET, value="/{oid}")
-	public Match findById( @PathVariable("oid") Integer oid ){
+	public MatchStat findById(@PathVariable("oid") Integer oid ){
 		return service.findById(oid);
 	}
 
@@ -63,16 +52,11 @@ public class MatchRest {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public void save( @RequestBody Match match){
-		service.save(match);
+	public void save( @RequestBody MatchStat stat){
+		service.save(stat);
 	}
 
 
-
-	@RequestMapping(method = RequestMethod.GET, value="/{oid}/stats")
-	public List<MatchStat> findByMatch(@PathVariable("oid") Integer oid ){
-		return matchStatService.findByMatch(new Match(oid));
-	}
 	
 
 }

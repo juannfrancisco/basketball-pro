@@ -30,6 +30,8 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 			$scope.match.date = new Date( $scope.match.date );
 			$scope.match.visitor.formacion = false;
 			$scope.match.local.formacion = false;
+			$scope.loadPlayers( $scope.match.local );
+			$scope.loadPlayers( $scope.match.visitor );
 			$scope.flagLoading = false;
 			NProgress.done();
 		} );
@@ -40,6 +42,23 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 		});
 	};
 	$scope.loadData();
+
+
+	$scope.loadPlayers = function(team){
+
+	    var request = $http.get( CONSTANTS.contextPath + "/teams/n/"+team.nameURL+"/players");
+        request.success( function( response )
+        {
+            team.players = response;
+        } );
+        request.error( function( error )
+        {
+            console.log( error );
+        });
+
+	};
+
+
 
 	$scope.calculateDigit = function( score , scoreText ){
 		var digits = [];
@@ -152,21 +171,46 @@ function($scope, $http, $routeParams, $interval,$uibModal)
               }
         });
 		
-		modalInstance.result.then(function (scoreNew) {
-			$scope.score[type] = $scope.score[type]+ scoreNew; 
-			$scope.calculateDigit($scope.score[type], $scope.scoreText[type] );
-			
-			
-			player.totalPoints = player.totalPoints + scoreNew;
-			player.points = player.points ? player.points : []; 
-			player.points.push( { date: new Date(), point:scoreNew, quarter:$scope.quarter.length-1 } );
-			$scope.quarter[$scope.quarter.length-1].points.push( { date: new Date(), point:scoreNew, player:player } );
+		modalInstance.result.then(function (stat) {
+            if(stat.type == "PTS"){
+                debugger;
+                stat.quarter = $scope.quarter.length;
+                stat.match = {oid: $scope.match.oid};
+                stat.player = {oid: stat.player.oid };
+
+                $scope.addMatchStat(stat);
+
+                var scoreNew = stat.value
+                $scope.score[type] = $scope.score[type]+ scoreNew;
+                $scope.calculateDigit($scope.score[type], $scope.scoreText[type] );
+
+
+                player.totalPoints = player.totalPoints + scoreNew;
+                player.points = player.points ? player.points : [];
+                player.points.push( { date: new Date(), point:scoreNew, quarter:$scope.quarter.length-1 } );
+                $scope.quarter[$scope.quarter.length-1].points.push( { date: new Date(), point:scoreNew, player:player } );
+
+            }
+
 			
 	    }, function () {
 	      console.log("xxssss");
 	    });
 	};
-	
+
+
+	$scope.addMatchStat = function(stat){
+        var request = $http.put( CONSTANTS.contextPath + "/matchstats/", stat);
+        request.success( function( response )
+        {
+            console.log("sa");
+        } );
+        request.error( function( error )
+        {
+            console.log(error);
+        });
+
+	}
 	/**
 	 * 
 	 */
@@ -282,7 +326,7 @@ function($scope,$uibModalInstance, player, score )
 	 * 
 	 */
 	$scope.addPoint = function(point){
-		$uibModalInstance.close( point );
+		$uibModalInstance.close( {value:point, type:'PTS', player: player} );
 	}
 	
 	/**

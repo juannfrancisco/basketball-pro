@@ -82,8 +82,56 @@ app.controller("TeamEditController", ['$scope', '$http', '$routeParams',function
 				break;
 			}
 		}
-		alert($scope.team.players);
 	};
+
+
+
+	/**
+     *
+     */
+    $scope.deleteTeam = function( ){
+
+        //TODO: Agregar una alerta antes de eliminar
+        NProgress.start();
+        var request = $http.delete( CONSTANTS.contextPath + "/teams/"+ $routeParams.id );
+        request.success( function( response )
+        {
+            NProgress.done();
+        } );
+        request.error( function( error )
+        {
+            console.log(error);
+            $scope.errorMsg= "Ocurrio un error al ingresar el equipo, intente más tarde";
+            $scope.diplayError = true;
+            NProgress.done();
+        });
+    };
+
+
+    /**
+     *
+     */
+    $scope.updateTeam = function( ){
+
+        //TODO: Agregar una alerta antes de eliminar
+        if($scope.team.coach){
+            $scope.team.coach = {oid: $scope.team.coach.oid};
+        }
+        console.log($scope.team);
+        NProgress.start();
+        var request = $http.post( CONSTANTS.contextPath + "/teams/"+ $routeParams.id, $scope.team );
+        request.success( function( response )
+        {
+            NProgress.done();
+        } );
+        request.error( function( error )
+        {
+            console.log(error);
+            $scope.errorMsg= "Ocurrio un error al actualizar el equipo, intente más tarde";
+            $scope.diplayError = true;
+            NProgress.done();
+        });
+    };
 
 
 

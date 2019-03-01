@@ -17,6 +17,7 @@
 package cl.grupo.maldonado.app.basket.controllers;
 
 import cl.grupo.maldonado.app.basket.core.Coach;
+import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.services.ChampionshipService;
 
@@ -57,6 +58,12 @@ public class ChampionshipRest {
 	@RequestMapping(method = RequestMethod.PUT)
 	public void save( @RequestBody Championship Championship){
 		service.save(Championship);
+	}
+
+
+	@RequestMapping(method = RequestMethod.PUT, value="/{oid}/teams")
+	public void addTeam( @PathVariable("oid") Integer oid , @RequestBody Team team){
+		service.addTeam(oid, team);
 	}
 
 }

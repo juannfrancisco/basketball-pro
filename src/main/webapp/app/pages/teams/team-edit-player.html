@@ -9,7 +9,8 @@
 	            <ol class="breadcrumb breadcrumb-transparent nm">
 	                <li><a href="#/">Home</a></li>
 	                <li><a href="#/teams">Equipos</a></li>
-	                <li class="active">Nuevo Jugador</li>
+                    <li><a href="#/team/{{player.currentTeam.oid}}/players">{{player.currentTeam.name}}</a></li>
+	                <li class="active">Edición</li>
 	            </ol>
 	        </div>
 	    </div>
@@ -109,7 +110,7 @@
               
              <div class="form-group">
              		<div class="col-sm-12">
-             			<button class="btn btn-success btn-block mt15 mb15"  value="button" ng-click="save()">Guardar</button>
+             			<button class="btn btn-info btn-lg btn-block mt15 mb15"  value="button" ng-click="save()">Guardar</button>
              		</div>
              </div>
 	         <div ng-show="diplayError" class="alert alert-danger">{{errorMsg}}</div>

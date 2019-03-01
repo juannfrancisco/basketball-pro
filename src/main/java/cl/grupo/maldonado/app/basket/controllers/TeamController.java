@@ -54,6 +54,12 @@ public class TeamController {
         service.save(team);
     }
 
+    @RequestMapping(method = RequestMethod.POST, value="/{oid}")
+    public void updateTeam(@RequestBody  Team team){
+        service.update(team);
+    }
+
+
     @RequestMapping(method = RequestMethod.PUT,value="/{oid}/players" )
     public void addPlayerTeam(@PathVariable("oid") Integer oid, @RequestBody Player player){
         Team team = new Team(oid);

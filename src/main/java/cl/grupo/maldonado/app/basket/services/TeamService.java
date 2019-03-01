@@ -30,6 +30,20 @@ public class TeamService {
         repository.save(team);
     }
 
+
+    /**
+     * @param team
+     */
+    public void update( Team team ){
+        Team teamUpdate = getById(team.getOid());
+        teamUpdate.setName(team.getName());
+        teamUpdate.setNameURL(team.getNameURL());
+        teamUpdate.setGender(team.getGender());
+        teamUpdate.setBio(team.getBio());
+        teamUpdate.setContact(team.getContact());
+        repository.save(teamUpdate);
+    }
+
     public List<Team> getAll(  ){
         return repository.findAll();
     }

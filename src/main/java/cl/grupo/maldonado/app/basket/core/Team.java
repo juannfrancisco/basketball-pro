@@ -16,6 +16,7 @@
  */
 package cl.grupo.maldonado.app.basket.core;
 
+import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.common.Contact;
 
 import java.util.List;
@@ -52,6 +53,11 @@ public class Team {
 
 	@Embedded
 	private Contact contact;
+
+
+	@ManyToOne
+	@JoinColumn
+	private Championship championship;
 
 
 
@@ -188,7 +194,17 @@ public class Team {
 	public void setNameURL(String nameURL) {
 		this.nameURL = nameURL;
 	}
-	
+
+
+	public Championship getChampionship() {
+		return championship;
+	}
+
+	public void setChampionship(Championship championship) {
+		this.championship = championship;
+	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if( obj instanceof Team ){

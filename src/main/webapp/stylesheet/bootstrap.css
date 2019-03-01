@@ -2939,8 +2939,8 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  background-color: #475577;
+  border-color: #475580;
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -3105,12 +3105,24 @@ fieldset[disabled] .btn-link:focus {
   color: #777;
   text-decoration: none;
 }
+
+
+.btn-wd,
+.btn-group-wd > .btn {
+  padding: 10px 16px;
+  font-size: 16px !important;
+  line-height: 1.33;
+  border-radius: 4px !important;
+  width:250px;
+}
+
+
 .btn-lg,
 .btn-group-lg > .btn {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.33;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 .btn-sm,
 .btn-group-sm > .btn {

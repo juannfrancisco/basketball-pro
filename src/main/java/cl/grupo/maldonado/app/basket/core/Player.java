@@ -29,9 +29,8 @@ public class Player extends Person{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer oid;
-	private String oidCurrentTeam;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn
 	private Team currentTeam;
 	private int number;
@@ -100,21 +99,6 @@ public class Player extends Person{
 	 */
 	public void setOid(Integer oid) {
 		this.oid = oid;
-	}
-	
-	
-	/**
-	 * @return the oidCurrentTeam
-	 */
-	public String getOidCurrentTeam() {
-		return oidCurrentTeam;
-	}
-
-	/**
-	 * @param oidCurrentTeam the oidCurrentTeam to set
-	 */
-	public void setOidCurrentTeam(String oidCurrentTeam) {
-		this.oidCurrentTeam = oidCurrentTeam;
 	}
 
 	/**

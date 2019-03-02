@@ -66,4 +66,9 @@ public class ChampionshipRest {
 		service.addTeam(oid, team);
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value="/{oid}/teams")
+	public List<Team> getTeams( @PathVariable("oid") Integer oid ){
+		return service.findTeamsByChampionship(new Championship(oid));
+	}
+
 }

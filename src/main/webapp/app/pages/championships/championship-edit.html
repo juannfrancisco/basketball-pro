@@ -22,27 +22,54 @@
     </div>
         
         <div class="row" >
-			<form class="form-horizontal form-bordered pr15 pl15" id="form-editar-equipo">
+            <div class="col-md-6">
+			    <form class="form-horizontal form-bordered pr15 pl15" id="form-editar-equipo">
         			<div class="form-group">
-                    <label class="col-sm-3 control-label">Nombre</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" ng-model="object.name">
+                        <label class="col-sm-3 control-label">Nombre</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="object.name">
+                        </div>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Descripcion</label>
-                    <div class="col-sm-9">
-                        <textarea class="form-control" ng-model="object.description"></textarea>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Descripcion</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" ng-model="object.description"></textarea>
+                        </div>
                     </div>
-                </div>
-                	<div class="form-group">
-                		<div class="col-md-12 text-right pt5 pb0">
-	        				<button class="btn btn-success btn-block mt15 mb15"  value="button"  ng-click="update()">Guardar</button>
-	        				<button class="btn btn-danger btn-block mt15 mb15"  value="button"  ng-click="remove()">Eliminar</button>
-	        			</div>
-                	</div>
-        		</form>
+                    <div class="form-group">
+                        <div class="col-md-12 text-right pt5 pb0">
+                            <button class="btn btn-success btn-block mt15 mb15"  value="button"  ng-click="update()">Guardar</button>
+                            <button class="btn btn-danger btn-block mt15 mb15"  value="button"  ng-click="remove()">Eliminar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col-md-6">
+                <form>
+                    <h4>Agregar </h4>
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="teamOid">
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-info btn-block"  value="button"  ng-click="addTeam()">Add</button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr/>
+
+                <h4>Todos los Equipos</h4>
+                <table class="table" >
+                    <tr ng-repeat="team in teams">
+                        <td>{{team.oid}}</td>
+                        <td>{{team.name}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 </div>
 

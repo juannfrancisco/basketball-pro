@@ -55,9 +55,8 @@ public class Team {
 	private Contact contact;
 
 
-	@ManyToOne
-	@JoinColumn
-	private Championship championship;
+
+
 
 
 
@@ -193,15 +192,6 @@ public class Team {
 
 	public void setNameURL(String nameURL) {
 		this.nameURL = nameURL;
-	}
-
-
-	public Championship getChampionship() {
-		return championship;
-	}
-
-	public void setChampionship(Championship championship) {
-		this.championship = championship;
 	}
 
 

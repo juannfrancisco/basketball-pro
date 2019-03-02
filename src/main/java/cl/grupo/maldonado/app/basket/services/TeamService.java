@@ -6,6 +6,7 @@ import cl.grupo.maldonado.app.basket.repositories.PlayerRepository;
 import cl.grupo.maldonado.app.basket.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +35,14 @@ public class TeamService {
     /**
      * @param team
      */
+    @Transactional
     public void update( Team team ){
-        Team teamUpdate = getById(team.getOid());
-        teamUpdate.setName(team.getName());
-        teamUpdate.setNameURL(team.getNameURL());
-        teamUpdate.setGender(team.getGender());
-        teamUpdate.setBio(team.getBio());
-        teamUpdate.setContact(team.getContact());
-        repository.save(teamUpdate);
+        repository.updateInfoById(team.getOid(),
+                team.getBio(),
+                team.getNameURL(),
+                team.getContact().getPhone(),
+                team.getContact().getEmail(),
+                team.getName());
     }
 
     public List<Team> getAll(  ){

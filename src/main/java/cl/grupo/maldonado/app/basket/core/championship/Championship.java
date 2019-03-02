@@ -35,6 +35,7 @@ public class Championship {
 	private Integer oid;
 	private String name;
 	private String description;
+	private ChampionshipState state;
 	
 	/**
 	 * 
@@ -91,4 +92,12 @@ public class Championship {
 		this.description = description;
 	}
 
+
+	public ChampionshipState getState() {
+		return state;
+	}
+
+	public void setState(ChampionshipState state) {
+		this.state = state;
+	}
 }

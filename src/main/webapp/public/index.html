@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-ng-app="AppBasket">
 <head>
-    <title>Alchemists Basketball Club &amp; Sports News HTML Template - Team</title>
+    <title>Basketball Pro</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sports Club, League and News">
@@ -176,9 +176,9 @@
             <div class="container">
                 <a href="#" class="content-filter__toggle"></a>
                 <ul class="content-filter__list">
-                    <li class="content-filter__item "><a href="team-overview.html" class="content-filter__link"><small>The Team</small>Info</a></li>
-                    <li class="content-filter__item "><a href="team-roster-1.html" class="content-filter__link"><small>The Team</small>Planilla</a></li>
-                    <li class="content-filter__item "><a href="team-standings.html" class="content-filter__link"><small>Tabla de </small>Posiciones</a></li>
+                    <li class="content-filter__item "><a href="#/team/{{team.nameURL}}" class="content-filter__link"><small>The Team</small>Info</a></li>
+                    <li class="content-filter__item "><a href="#/team/{{team.nameURL}}/roster" class="content-filter__link"><small>The Team</small>Planilla</a></li>
+                    <li class="content-filter__item "><a href="#/team/{{team.nameURL}}/standings" class="content-filter__link"><small>Tabla de </small>Posiciones</a></li>
                     <li class="content-filter__item "><a href="team-last-results.html" class="content-filter__link"><small>The Team</small>Últimos Resultados</a></li>
                     <li class="content-filter__item "><a href="team-schedule.html" class="content-filter__link"><small>The Team</small>Programación</a></li>
                     <li class="content-filter__item "><a href="team-gallery.html" class="content-filter__link"><small>The Team</small>Gallery</a></li>
@@ -318,6 +318,7 @@
 <script type="text/javascript" src="js/controllers/TeamController.js"></script>
 <script type="text/javascript" src="js/controllers/TeamProfileController.js"></script>
 <script type="text/javascript" src="js/controllers/TeamRosterController.js"></script>
+<script type="text/javascript" src="js/controllers/TeamStandingsController.js"></script>
 
 </body>
 </html>

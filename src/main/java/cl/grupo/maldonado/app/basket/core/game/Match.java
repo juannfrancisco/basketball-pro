@@ -20,6 +20,7 @@ import java.util.Date;
 
 import cl.grupo.maldonado.app.basket.core.Court;
 import cl.grupo.maldonado.app.basket.core.Team;
+import cl.grupo.maldonado.app.basket.core.championship.Championship;
 
 
 import javax.persistence.*;
@@ -57,6 +58,10 @@ public class Match {
 	@ManyToOne
 	@JoinColumn
 	private Referee referee;
+
+	@ManyToOne
+	@JoinColumn
+	private Championship championship;
 	
 	private MatchState state;
 	
@@ -191,6 +196,14 @@ public class Match {
 	 */
 	public void setState(MatchState state) {
 		this.state = state;
+	}
+
+	public Championship getChampionship() {
+		return championship;
+	}
+
+	public void setChampionship(Championship championship) {
+		this.championship = championship;
 	}
 
 	@Override

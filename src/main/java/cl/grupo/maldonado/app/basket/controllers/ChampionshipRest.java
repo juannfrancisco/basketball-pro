@@ -16,9 +16,10 @@
  */
 package cl.grupo.maldonado.app.basket.controllers;
 
-import cl.grupo.maldonado.app.basket.core.Coach;
 import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
+import cl.grupo.maldonado.app.basket.core.championship.ChampionshipTeam;
+import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.services.ChampionshipService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,16 @@ public class ChampionshipRest {
 	@RequestMapping(method = RequestMethod.GET, value="/{oid}/teams")
 	public List<Team> getTeams( @PathVariable("oid") Integer oid ){
 		return service.findTeamsByChampionship(new Championship(oid));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value="/{oid}/teams-stats")
+	public List<ChampionshipTeam> getTeamsStats(@PathVariable("oid") Integer oid ){
+		return service.findTeamsStatsByChampionship(new Championship(oid));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value="/{oid}/matches")
+	public List<Match> getMatches(@PathVariable("oid") Integer oid ){
+		return service.findMatchesByChampionship(new Championship(oid));
 	}
 
 }

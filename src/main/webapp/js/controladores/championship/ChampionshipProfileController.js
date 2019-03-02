@@ -26,6 +26,7 @@ app.controller("ChampionshipProfileController", ['$scope', '$http', '$routeParam
 			NProgress.done();
 
 			$scope.loadTeams();
+			$scope.loadMatches();
         })
         .catch(function(err) {
         	$scope.flagLoading = false;
@@ -42,11 +43,11 @@ app.controller("ChampionshipProfileController", ['$scope', '$http', '$routeParam
     {
         $scope.flagLoading = true;
         NProgress.start();
-        var request = $http.get( CONSTANTS.contextPath + "/"+$scope.nameObjects + "/"+ $routeParams.id +"/teams");
+        var request = $http.get( CONSTANTS.contextPath + "/"+$scope.nameObjects + "/"+ $routeParams.id +"/teams-stats");
         request.success( function( response )
         {
             $scope.flagLoading = false;
-            $scope.teams = response;
+            $scope.teamsStats = response;
             console.log( response );
             NProgress.done();
         } );
@@ -54,6 +55,30 @@ app.controller("ChampionshipProfileController", ['$scope', '$http', '$routeParam
         {
             console.log(error);
             $scope.errorMsg= "Ocurrio un error al ingresar el equipo, intente más tarde";
+            $scope.diplayError = true;
+            NProgress.done();
+        });
+    };
+
+    /**
+     *
+     */
+    $scope.loadMatches = function(  )
+    {
+        $scope.flagLoading = true;
+        NProgress.start();
+        var request = $http.get( CONSTANTS.contextPath + "/"+$scope.nameObjects + "/"+ $routeParams.id +"/matches");
+        request.success( function( response )
+        {
+            $scope.flagLoading = false;
+            $scope.matches = response;
+            console.log( response );
+            NProgress.done();
+        } );
+        request.error( function( error )
+        {
+            console.log(error);
+            $scope.errorMsg= "Ocurrio un error al cargar los equipos, intente más tarde";
             $scope.diplayError = true;
             NProgress.done();
         });

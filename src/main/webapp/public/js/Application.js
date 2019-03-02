@@ -6,8 +6,9 @@ app.config(['$routeProvider', '$controllerProvider',function($routeProvider, $co
 	app.registerCtrl = $controllerProvider.register;
 	$routeProvider
     .when('/',{controller:'DashboardController',templateUrl: 'inicio.html'})
-    .when('/team/:nameURL',{controller:'TeamProfileController',templateUrl: 'inicio.html'})
+    .when('/team/:nameURL',{controller:'TeamProfileController',templateUrl: 'pages/team-profile.html'})
     .when('/team/:nameURL/roster',{controller:'TeamRosterController',templateUrl: 'pages/roster.html'})
+    .when('/team/:nameURL/standings',{controller:'TeamStandingsController',templateUrl: 'pages/team-standings.html'})
     .when('/teams',{controller:'TeamController',templateUrl: 'pages/teams/teams.html'})
     .otherwise({redirectTo:'/'});
 }]);

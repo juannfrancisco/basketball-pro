@@ -25,6 +25,15 @@ public class ChampionshipTeam {
     private Championship championship;
 
 
+    private Integer points = 0;
+
+    private Integer playGames = 0;
+
+    private Integer lostGames = 0;
+
+    private Integer winGames = 0;
+
+
     public ChampionshipTeam(){}
 
     public ChampionshipTeam( Integer oid){
@@ -53,5 +62,38 @@ public class ChampionshipTeam {
 
     public void setChampionship(Championship championship) {
         this.championship = championship;
+    }
+
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public Integer getPlayGames() {
+        return playGames;
+    }
+
+    public void setPlayGames(Integer playGames) {
+        this.playGames = playGames;
+    }
+
+    public Integer getLostGames() {
+        return lostGames;
+    }
+
+    public void setLostGames(Integer lostGames) {
+        this.lostGames = lostGames;
+    }
+
+    public Integer getWinGames() {
+        return winGames;
+    }
+
+    public void setWinGames(Integer winGames) {
+        this.winGames = winGames;
     }
 }

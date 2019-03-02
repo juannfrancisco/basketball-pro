@@ -1,0 +1,78 @@
+<!-- Content
+		================================================== -->
+<div class="site-content">
+    <div class="container">
+
+        <!-- Team Standings -->
+        <div class="card card--has-table" data-ng-repeat="champion in championships" >
+            <div class="card__header">
+                <h4>{{champion.name}} Standings</h4>
+            </div>
+            <div class="card__content">
+                <div class="table-responsive">
+                    <table class="table table-hover table-standings table-standings--full">
+                        <thead>
+                            <tr>
+                                <th class="team-standings__pos">Pos</th>
+                                <th class="team-standings__team">Teams</th>
+                                <th class="team-standings__win">PG</th>
+                                <th class="team-standings__lose">PP</th>
+                                <th class="team-standings__pct">PJ</th>
+                                <th class="team-standings__gb">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="standing in champion.standings" >
+                                <td class="team-standings__pos">01</td>
+                                <td class="team-standings__team">
+                                    <div class="team-meta">
+                                        <figure class="team-meta__logo">
+                                            <img src="assets/images/samples/logos/pirates_shield.png" alt="">
+                                        </figure>
+                                        <div class="team-meta__info">
+                                            <h6 class="team-meta__name">{{standing.team.name}}</h6>
+                                            <span class="team-meta__place">Bebop Institute</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="team-standings__win">{{standing.winGames}}</td>
+                                <td class="team-standings__lose">{{standing.lostGames}}</td>
+                                <td class="team-standings__pct">{{standing.playGames}}</td>
+                                <td class="team-standings__gb">{{standing.points}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Team Standings / End -->
+
+        <!-- Team Glossary -->
+        <div class="card">
+            <div class="card__header">
+                <h4>Glossary</h4>
+            </div>
+            <div class="card__content">
+                <div class="glossary">
+                    <div class="glossary__item"><span class="glossary__abbr">W:</span> Wins</div>
+                    <div class="glossary__item"><span class="glossary__abbr">GB:</span> Game Back</div>
+                    <div class="glossary__item"><span class="glossary__abbr">DIV:</span> Division Record</div>
+                    <div class="glossary__item"><span class="glossary__abbr">DIFF:</span> Average Point Differential</div>
+                    <div class="glossary__item"><span class="glossary__abbr">L:</span> Losses</div>
+                    <div class="glossary__item"><span class="glossary__abbr">Home:</span> Home Record</div>
+                    <div class="glossary__item"><span class="glossary__abbr">PPG:</span> Points per Game</div>
+                    <div class="glossary__item"><span class="glossary__abbr">STRK:</span> Current Streak</div>
+                    <div class="glossary__item"><span class="glossary__abbr">PCT:</span> Winning Percentages</div>
+                    <div class="glossary__item"><span class="glossary__abbr">Road:</span> Road Record</div>
+                    <div class="glossary__item"><span class="glossary__abbr">OPP PPG:</span> Opponent Points per Game</div>
+                    <div class="glossary__item"><span class="glossary__abbr">L10:</span> Record Last 10 Games</div>
+                </div>
+            </div>
+        </div>
+        <!-- Team Glossary / End -->
+
+    </div>
+</div>
+
+<!-- Content / End -->

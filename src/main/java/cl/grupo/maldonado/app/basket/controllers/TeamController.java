@@ -2,11 +2,14 @@ package cl.grupo.maldonado.app.basket.controllers;
 
 import cl.grupo.maldonado.app.basket.core.Player;
 import cl.grupo.maldonado.app.basket.core.Team;
+import cl.grupo.maldonado.app.basket.core.championship.Championship;
+import cl.grupo.maldonado.app.basket.core.championship.ChampionshipTeam;
 import cl.grupo.maldonado.app.basket.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -42,6 +45,16 @@ public class TeamController {
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}/players")
     public List<Player> findPlayersByNameURL( @PathVariable("name") String name ){
         return service.findPlayersByName(name);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/n/{name}/championships")
+    public  List<Championship> findChampionshipsByNameURL(@PathVariable("name") String name ){
+        return service.findChampionshipsByName(name);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/n/{name}/standings")
+    public  List<List<ChampionshipTeam>> findStandingsByNameURL(@PathVariable("name") String name ){
+        return service.findStandingsByName(name);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value="/{oid}")

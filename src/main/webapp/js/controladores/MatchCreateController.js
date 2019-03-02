@@ -2,7 +2,8 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador
  *************************************************************/
-app.controller("MatchCreateController", ['$scope', '$http', '$location' , 'GenericService',function($scope, $http, $location , GenericService ){
+app.controller("MatchCreateController", ['$scope', '$http', '$location' , 'GenericService', '$routeParams',
+function($scope, $http, $location , GenericService, $routeParams ){
 
 	$scope.match = {};
 	$scope.teams = [];
@@ -37,6 +38,8 @@ app.controller("MatchCreateController", ['$scope', '$http', '$location' , 'Gener
 
 	$scope.save = function(){
 		NProgress.start();
+
+		$scope.match.championship = {oid: $routeParams.id };
 
 		var request = $http.put( CONSTANTS.contextPath + "/matches", $scope.match );
 		request.success( function( response )

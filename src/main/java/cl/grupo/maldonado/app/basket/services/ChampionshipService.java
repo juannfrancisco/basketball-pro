@@ -4,10 +4,8 @@ import cl.grupo.maldonado.app.basket.core.Court;
 import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.championship.ChampionshipTeam;
-import cl.grupo.maldonado.app.basket.repositories.ChampionshipRepository;
-import cl.grupo.maldonado.app.basket.repositories.ChampionshipTeamRepository;
-import cl.grupo.maldonado.app.basket.repositories.CourtRepository;
-import cl.grupo.maldonado.app.basket.repositories.TeamRepository;
+import cl.grupo.maldonado.app.basket.core.game.Match;
+import cl.grupo.maldonado.app.basket.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +20,10 @@ public class ChampionshipService {
 
     @Autowired
     private ChampionshipTeamRepository championshipTeamRepository;
+
+
+    @Autowired
+    private MatchRepository matchRepository;
 
 
     public List<Championship> listAll(){
@@ -59,6 +61,19 @@ public class ChampionshipService {
         champList.forEach(championshipTeam -> teams.add(championshipTeam.getTeam()));
         return teams;
     }
+
+
+    public List<ChampionshipTeam> findTeamsStatsByChampionship(Championship championship){
+        List<ChampionshipTeam>  champList = championshipTeamRepository.findByChampionship(championship);
+        return champList;
+    }
+
+
+    public List<Match> findMatchesByChampionship(Championship championship){
+        return matchRepository.findByChampionship( championship );
+    }
+
+
 
 
 }

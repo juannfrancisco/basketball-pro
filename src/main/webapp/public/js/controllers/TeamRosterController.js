@@ -18,6 +18,9 @@ function($scope, $http, $routeParams, $timeout)
 		request.success( function( response )
 		{
 			$scope.players = response;
+			for( var i in $scope.players ){
+			    $scope.players[i].age = $scope.getAge($scope.players[i].birthdate);
+			}
 			$scope.flagLoading = false;
 			$timeout( $scope.loadPlayersSlider, 500 );
 
@@ -28,6 +31,16 @@ function($scope, $http, $routeParams, $timeout)
 			$scope.flagLoading = false;
 		});
 	};
+
+	$scope.getAge = function( birthdate ){
+        //SAFARI - 1989-11-01T03:00:00.000+0000
+        //CHROME - 1989-11-01T03:00:00.000+0000
+
+
+        var birthdatex = new Date(birthdate.substring(0,10));
+        var date = new Date();
+        return date.getFullYear() - birthdatex.getFullYear();
+    };
 
 
 	$scope.loadPlayersSlider = function(){

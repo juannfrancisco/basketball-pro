@@ -33,7 +33,10 @@ app.controller("PlayerProfileController", ['$scope', '$http', '$routeParams',
 	};
 	
 	$scope.getAge = function( birthdate ){
-		var birthdatex = new Date(birthdate);
+	    //SAFARI - 1989-11-01T03:00:00.000+0000
+	    //CHROME - 1989-11-01T03:00:00.000+0000
+
+		var birthdatex = new Date(birthdate.substring(0,10));
 		var date = new Date();
 		return date.getFullYear() - birthdatex.getFullYear();
 	};

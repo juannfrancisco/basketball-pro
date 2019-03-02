@@ -19,7 +19,7 @@
                         <span class="team-roster__player-first-name">{{player.name}}</span>
                         <span class="team-roster__player-last-name">{{player.lastName}}</span>
                     </h3>
-                    <div class="team-roster__player-position">{{player.position}}</div>
+                    <div class="team-roster__player-position">{{msgI18n(player.position)}}</div>
                 </div>
             </div>
             <!-- Player Details / End -->
@@ -62,8 +62,8 @@
                             <tr ng-repeat="player in players">
                                 <td class="team-roster-table__number">{{player.number}}</td>
                                 <td class="team-roster-table__name">{{player.name}} {{player.lastName}}</td>
-                                <td class="team-roster-table__position hidden-xs hidden-sm">{{player.position}}</td>
-                                <td class="team-roster-table__age">18</td>
+                                <td class="team-roster-table__position hidden-xs hidden-sm">{{msgI18n(player.position)}} </td>
+                                <td class="team-roster-table__age">{{player.age}}</td>
                                 <td class="team-roster-table__height">{{player.height}}</td>
                                 <td class="team-roster-table__weight">{{player.weight}} kl</td>
                             </tr>

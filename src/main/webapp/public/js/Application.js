@@ -9,6 +9,8 @@ app.config(['$routeProvider', '$controllerProvider',function($routeProvider, $co
     .when('/team/:nameURL',{controller:'TeamProfileController',templateUrl: 'pages/team-profile.html'})
     .when('/team/:nameURL/roster',{controller:'TeamRosterController',templateUrl: 'pages/roster.html'})
     .when('/team/:nameURL/standings',{controller:'TeamStandingsController',templateUrl: 'pages/team-standings.html'})
+    .when('/team/:nameURL/schedule',{controller:'TeamScheduleController',templateUrl: 'pages/team-schedule.html'})
+    .when('/team/:nameURL/last-results',{controller:'TeamLastResultController',templateUrl: 'pages/team-last-results.html'})
     .when('/teams',{controller:'TeamController',templateUrl: 'pages/teams/teams.html'})
     .otherwise({redirectTo:'/'});
 }]);

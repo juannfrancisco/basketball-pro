@@ -2,16 +2,21 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador MatchPlayingController
  *************************************************************/
-app.controller("MatchPlayingController", ['$scope', '$http', '$routeParams', '$interval', '$uibModal',
-function($scope, $http, $routeParams, $interval,$uibModal)
+app.controller("MatchPlayingController", ['$scope', '$http', '$routeParams', '$interval', '$uibModal', '$window',
+function($scope, $http, $routeParams, $interval,$uibModal, $window)
 {
 	$scope.flagLoading = true;
-	$scope.time = 300;
+	$scope.timeInit = 20;
+	$scope.time = 20;
 	$scope.timetext = "00:00:00";
 	$scope.score = { visitor:0, local:0 };
 	$scope.scoreText = { visitor:{d1:0, d2:0, d3:0}, local:{ d1:0, d2:0, d3:0 } };
 	$scope.point = {team:'', score:0};
 	$scope.quarter = [];
+
+	var MATCH = "match-";
+
+
 
 	/**
 	 *
@@ -19,7 +24,6 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 	$scope.loadData = function()
 	{
 		$scope.flagLoading = true;
-//		NProgress.configure({ parent: '#main' });
 		NProgress.start();
 
 		var request =
@@ -33,6 +37,9 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 			$scope.loadPlayers( $scope.match.local );
 			$scope.loadPlayers( $scope.match.visitor );
 			$scope.flagLoading = false;
+
+			$scope.statsLocal = $window.localStorage ? JSON.parse( $window.localStorage.getItem( MATCH+ $scope.match.oid ) ) : null;
+
 			NProgress.done();
 		} );
 		request.error( function( error )
@@ -42,6 +49,12 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 		});
 	};
 	$scope.loadData();
+
+	$scope.deleteDataLocal = function(){
+	    if( $window.localStorage && $window.localStorage.getItem( MATCH+ $scope.match.oid )  ){
+	        $window.localStorage.removeItem(MATCH+ $scope.match.oid);
+	    }
+	}
 
 
 	$scope.loadPlayers = function(team){
@@ -83,7 +96,12 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 	 * 
 	 */
 	$scope.startCount = function(){
-		$scope.quarter.push( {name: ($scope.quarter.length + 1 ) + "quarter",points:[]} );
+	    debugger;
+
+	    if( $scope.stateWatch == "stop" ){
+	        $scope.quarter.push( {name: ($scope.quarter.length + 1 ) + "quarter",points:[]} );
+	    }
+
 		if ( angular.isDefined(stop) ) return;
 		$scope.stateWatch = "play"
 		stop = $interval(function() {
@@ -94,7 +112,7 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 				var seconds = $scope.time % 60;
 				$scope.timetext = (hour <10 ? "0"+hour:hour) + ":" + (min <10 ? "0"+ min: min) + ":"+ (seconds<10 ? "0"+seconds: seconds);
 			} else {
-				//$scope.pauseCount();
+				$scope.stopQuarter();
 			}
         }, 1000);
 	};
@@ -103,6 +121,7 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 	 * 
 	 */
 	$scope.pauseCount = function(){
+	    debugger;
 		if (angular.isDefined(stop)) {
             $interval.cancel(stop);
             stop = undefined;
@@ -114,17 +133,28 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 	 * 
 	 */
 	$scope.stopCount = function(){
-		
-		alert( "Desea terminar el partido ? " );
+		debugger;
+		//alert( "Desea terminar el partido ? " );
 		if (angular.isDefined(stop)) {
             $interval.cancel(stop);
             stop = undefined;
         }
-		$scope.time = 600;
+		$scope.time = $scope.timeInit;
         $scope.timetext = "00:00:00";
         $scope.stateWatch = "stop";
- 
 	};
+
+
+
+	$scope.stopQuarter = function(){
+        if (angular.isDefined(stop)) {
+            $interval.cancel(stop);
+            stop = undefined;
+        }
+        $scope.time = $scope.timeInit;
+        $scope.timetext = "00:00:00";
+        $scope.stateWatch = "stop";
+    };
 	
 	/**
 	 * 
@@ -172,24 +202,23 @@ function($scope, $http, $routeParams, $interval,$uibModal)
         });
 		
 		modalInstance.result.then(function (stat) {
+
+            $scope.addMatchStatLocal(stat);
+		    //$scope.addMatchStat(stat);
+
             if(stat.type == "PTS"){
-                debugger;
                 stat.quarter = $scope.quarter.length;
                 stat.match = {oid: $scope.match.oid};
                 stat.player = {oid: stat.player.oid };
-
-                $scope.addMatchStat(stat);
 
                 var scoreNew = stat.value
                 $scope.score[type] = $scope.score[type]+ scoreNew;
                 $scope.calculateDigit($scope.score[type], $scope.scoreText[type] );
 
-
                 player.totalPoints = player.totalPoints + scoreNew;
                 player.points = player.points ? player.points : [];
                 player.points.push( { date: new Date(), point:scoreNew, quarter:$scope.quarter.length-1 } );
-                $scope.quarter[$scope.quarter.length-1].points.push( { date: new Date(), point:scoreNew, player:player } );
-
+                //  $scope.quarter[$scope.quarter.length-1].points.push( { date: new Date(), point:scoreNew, player:player } );
             }
 
 			
@@ -198,6 +227,29 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 	    });
 	};
 
+
+
+
+
+    $scope.addMatchStatLocal = function(stat){
+
+        stat.player = {oid:stat.player.oid};
+        if( $window.localStorage ){
+            if($window.localStorage.getItem( MATCH+ $scope.match.oid ) ){
+                var matchStatLocalStr = $window.localStorage.getItem( MATCH+ $scope.match.oid );
+                var matchStatLocal = JSON.parse(matchStatLocalStr);
+                matchStatLocal.stats.push( stat );
+
+                $window.localStorage.setItem(MATCH+$scope.match.oid, JSON.stringify(matchStatLocal));
+            }else{
+                var matchStatLocal = {stats : [stat]};
+
+                $window.localStorage.setItem(MATCH+$scope.match.oid, JSON.stringify(matchStatLocal));
+            }
+        }else{
+            alert("No se guardaran los datos en el dispositivo");
+        }
+	}
 
 	$scope.addMatchStat = function(stat){
         var request = $http.put( CONSTANTS.contextPath + "/matchstats/", stat);
@@ -287,7 +339,7 @@ function($scope,$uibModalInstance, match )
 		
 		for( i in $scope.team.players ){
 			$scope.team.players[i].titular = false;
-			$scope.team.players[i].titular = $scope.listPlayers[$scope.team.players[i].oid] && $scope.listPlayers[$scope.team.players[i].oid].titular;
+			$scope.team.players[i].titular = $scope.listPlayers[$scope.team.players[i].oid]; // && $scope.listPlayers[$scope.team.players[i].oid].titular;
 		}
 		$uibModalInstance.close( $scope.listPlayers );
 	}
@@ -297,6 +349,7 @@ function($scope,$uibModalInstance, match )
 	 * 
 	 */
 	$scope.selectPlayer = function(player){
+
 		$scope.q = "";
 		$scope.totalSelected = Object.keys($scope.listPlayers).length;
 		
@@ -325,16 +378,8 @@ function($scope,$uibModalInstance, player, score )
 	/**
 	 * 
 	 */
-	$scope.addPoint = function(point){
-		$uibModalInstance.close( {value:point, type:'PTS', player: player} );
-	}
-	
-	/**
-	 * 
-	 */
-	$scope.addFoul = function(){
-		player.fouls = player.fouls? player.fouls + 1 : 0;
-		$uibModalInstance.close( 0 );
+	$scope.addStat = function(value,type){
+		$uibModalInstance.close( {value:value, type:type, player: player} );
 	}
 	
 	/**

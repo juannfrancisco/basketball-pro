@@ -73,11 +73,25 @@ public class TeamController {
     }
 
 
+
+
     @RequestMapping(method = RequestMethod.PUT,value="/{oid}/players" )
     public void addPlayerTeam(@PathVariable("oid") Integer oid, @RequestBody Player player){
         Team team = new Team(oid);
         service.addPlayer(team, player);
     }
+
+
+    @RequestMapping(method = RequestMethod.POST,value="/{oid}/players/{oidPlayer}" )
+    public void updatePlayerTeam(@PathVariable("oid") Integer oid,
+                                 @PathVariable("oidPlayer") Integer oidPlayer,
+                                 @RequestBody Player player){
+        Team team = new Team(oid);
+        service.updatePlayer(team, player);
+    }
+
+
+
 
     @RequestMapping(method = RequestMethod.DELETE,value="/{oid}/players/{oidPlayer}" )
     public void removePlayerTeam(@PathVariable("oid") Integer oid,@PathVariable("oidPlayer") Integer oidPlayer){

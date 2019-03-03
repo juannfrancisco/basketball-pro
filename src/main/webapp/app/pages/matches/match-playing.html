@@ -26,6 +26,10 @@
 		                            </div>
 		                            <div class="panel-body">
 		                            	<div class="btn-group" role="group">
+											<button type="button" class="btn btn-default" ng-click="optionPlayer(null, 'local' )">
+												<h5 class="nm"><i class="ico-list"></i></h5>
+												<p class="nm">log</p>
+											</button>
 		                            	  <button type="button" class="btn btn-default" ng-click="logQuarter()">
 										  	<h5 class="nm"><i class="ico-list"></i></h5>
 		                                  	<p class="nm">log</p>
@@ -82,7 +86,7 @@
 	                                        <i class="ico-clock2"></i> {{timetext}}
 	                                    </li>
 	                                    <li class="text-center">
-	                                        <h5 class="semibold mb0">1er Cuarto</h5>
+	                                        <h5 class="semibold mb0">{{quarter.length}}er Cuarto</h5>
 	                                        <span>--</span>
 	                                    </li>
 	                                </ul>
@@ -105,7 +109,7 @@
 	                            </div>
 	                        </div>
 						</div>
-						<div class="col-md-8 ">
+						<!--div class="col-md-8 ">
 							<div class="menu-match row pl10 pr10 pt10  pb15" style="border-bottom:1px solid #EBEBEB;">
 				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
 				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5"
@@ -133,7 +137,7 @@
 					        			<div>Minuto</div>
 				        			</button>
 				        		</div>
-				        	</div>
+				        	</div-->
 						</div>
 		        	</div>
 		        	
@@ -142,14 +146,15 @@
 		        			<div class="list-group ma15" style="border:1px solid silver">
 			        			<div class="list-group-header">
 			        				<div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-success" ng-disabled="match.local.formacion" ng-click="addCrew('local')"><i class="ico-align-justify"></i> Formación</button>
+                                        <button type="button" class="btn btn-sm btn-success" ng-click="addCrew('local')"><i class="ico-align-justify"></i> Formación</button>
                                         <button type="button" class="btn btn-sm btn-default" ng-disabled="stateWatch!='play'"><i class="ico-watch"></i> Minuto</button>
                                     </div>
 			        			</div>
 			        			<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!match.local.formacion">
 									<span class="media-text ellipsis nm">No se han asignado jugadores a la formacion.</span>
 								</div>
-			        			<a class="list-group-item " ng-repeat="player in match.local.players " href="javascript:void(0)" ng-click="optionPlayer(player, 'local' )" ng-show="player.titular">
+			        			<a class="list-group-item " ng-repeat="player in match.local.players | orderBy :'number' "
+								   href="javascript:void(0)" ng-click="optionPlayer(player, 'local' )" ng-show="player.titular">
 									<span class="pull-left avatar mr10">
 										<span class="badge badge-number-player">{{player.number}}</span>
 						            </span>
@@ -171,7 +176,8 @@
 			        			<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!match.visitor.formacion">
 									<span class="media-text ellipsis nm">No se han asignado jugadores a la formacion.</span>
 								</div>
-			        			<a class="list-group-item " ng-repeat="player in match.visitor.players " href="javascript:void(0)" ng-click="optionPlayer(player,'visitor')" ng-show="player.titular">
+			        			<a class="list-group-item " ng-repeat="player in match.visitor.players | orderBy :'number' "
+								   href="javascript:void(0)" ng-click="optionPlayer(player,'visitor')" ng-show="player.titular">
 									<span class="pull-left avatar mr10">
 										<span class="badge badge-number-player">{{player.number}}</span>
 						            </span>
@@ -183,6 +189,30 @@
 							</div>
 		        		</div>
 		        	</div>
+
+					<div class="row" >
+						<div class="col-md-12">
+							<button class="btn btn-primary btn-lg" ng-click="deleteDataLocal();" >Eliminar datos locales</button>
+							<hr>
+
+							<table class="table" >
+								<thead>
+									<tr>
+										<th>Player</th>
+										<th>Type</th>
+										<th>value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="statLocal in statsLocal.stats">
+										<td>{{statLocal.player.oid}}</td>
+										<td>{{statLocal.type}}</td>
+										<td>{{statLocal.value}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 	        	</div>
 			</div>
         </div>

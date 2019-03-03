@@ -113,7 +113,6 @@ app.controller("TeamEditController", ['$scope', '$http', '$routeParams',function
      */
     $scope.updateTeam = function( ){
 
-        //TODO: Agregar una alerta antes de eliminar
         if($scope.team.coach){
             $scope.team.coach = {oid: $scope.team.coach.oid};
         }

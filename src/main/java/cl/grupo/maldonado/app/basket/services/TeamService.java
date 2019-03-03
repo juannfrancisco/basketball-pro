@@ -140,6 +140,21 @@ public class TeamService {
     }
 
 
+    @Transactional
+    public void updatePlayer( Team team, Player player ){
+
+        playerRepository.updateInfoById(player.getOid(),
+                player.getNumber(),
+                player.getPosition(),
+                player.getName(),
+                player.getLastName(),
+                player.getHeight(),
+                player.getWeight(),
+                player.getGender(),
+                player.getBirthdate());
+    }
+
+
     public void deletePlayer( Integer oid ){
         playerRepository.deleteById(oid);
     }

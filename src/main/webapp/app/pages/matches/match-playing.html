@@ -26,10 +26,6 @@
 		                            </div>
 		                            <div class="panel-body">
 		                            	<div class="btn-group" role="group">
-											<button type="button" class="btn btn-default" ng-click="optionPlayer(null, 'local' )">
-												<h5 class="nm"><i class="ico-list"></i></h5>
-												<p class="nm">log</p>
-											</button>
 		                            	  <button type="button" class="btn btn-default" ng-click="logQuarter()">
 										  	<h5 class="nm"><i class="ico-list"></i></h5>
 		                                  	<p class="nm">log</p>
@@ -199,6 +195,7 @@
 								<thead>
 									<tr>
 										<th>Player</th>
+										<th>Quarter</th>
 										<th>Type</th>
 										<th>value</th>
 									</tr>
@@ -206,8 +203,10 @@
 								<tbody>
 									<tr data-ng-repeat="statLocal in statsLocal.stats">
 										<td>{{statLocal.player.oid}}</td>
+										<td>{{statLocal.quarter}}</td>
 										<td>{{statLocal.type}}</td>
 										<td>{{statLocal.value}}</td>
+
 									</tr>
 								</tbody>
 							</table>

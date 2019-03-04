@@ -53,7 +53,7 @@
         
         <div class="row" >
         
-        	<div class="col-xs-6 col-sm-2 col-md-2" ng-repeat="e in team.players | filter:q as results">
+        	<div class="col-xs-6 col-sm-2 col-md-2" ng-repeat="e in team.players | orderBy : 'number' | filter:q as results">
         		<div class="thumbnail thumbnail-album animation animating  fadeInLeft" ng-click="ref( '/player/'+ e.oid );">
                    <div class="media">
                        <div class="indicator"><span class="spinner"></span></div>

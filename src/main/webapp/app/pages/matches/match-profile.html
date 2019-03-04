@@ -20,21 +20,44 @@
 			    			</div>
 			    		</div>
 			    </div>
-			</section>            
+			</section>
 	        
-	        	<div ng-show="match.state=='PENDING'" >
-		        	 <div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
-		        	 	<div class="col-xs-12 text-center"> 
-		        	 		<button class="btn btn-success btn-block"  value="button" ng-click="ref('/match/'+match.oid+'/playing')">Inicar Partido</button>
-		        	 	</div>
-		        	 </div>
-		        	 
-		        	 <div class="row pb15 pt15" style="border-bottom:1px solid #EBEBEB;" >
+			<div ng-show="match.state=='PENDING'" >
+				 <div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
+					<div class="col-xs-12 text-center">
+						<button class="btn btn-success btn-block"  value="button" ng-click="ref('/match/'+match.oid+'/playing')">Inicar Partido</button>
+					</div>
+				 </div>
+
+				<div class="row pb15 pt15" style="border-bottom:1px solid #EBEBEB;" >
 					<div class="col-xs-6 text-center"> <i class="ico-calendar"></i> {{match.date | date}}</div>
 					<div class="col-xs-6 text-center"> <i class="ico-time"></i> {{match.date | date :'HH:mm:ss'}}</div>
-		        	</div>
-	        	</div>
-	        	
+				</div>
+			</div>
+
+			<div class="row" >
+				<div class="col-md-12" >
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Cuarto</th>
+								<th>Stat</th>
+								<th>Valor</th>
+								<th>Equipo</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="stat in stats" >
+								<td>{{stat.quarter}}</td>
+								<td>{{stat.type}}</td>
+								<td>{{stat.value}}</td>
+								<td>{{stat.typeTeam}}</td>
+							</tr>
+						</tbody>
+
+					</table>
+				</div>
+			</div>
 	        	
         </div>
 	</div>

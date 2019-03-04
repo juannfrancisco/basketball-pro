@@ -2,59 +2,65 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("MatchProfileController",['$scope', '$http', '$routeParams', function($scope, $http, $routeParams)
+app.controller("GameProfileController", ['$scope', '$http', '$routeParams',
+function($scope, $http, $routeParams)
 {
+
 	$scope.flagLoading = true;
 
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
-//		NProgress.configure({ parent: '#main' });
-		NProgress.start();
 
 		var request =
 		$http.get( CONSTANTS.contextPath + "/matches/" + $routeParams.id );
 		request.success( function( response )
 		{
 			$scope.match = response;
-			$scope.match.date = new Date( $scope.match.date );
-			$scope.flagLoading = false;
-			NProgress.done();
-
 			$scope.loadStatsData();
+			$scope.flagLoading = false;
 		} );
 		request.error( function( error )
 		{
-			//alert( error );
+		    console.log(error);
 			$scope.flagLoading = false;
-			NProgress.done();
 		});
 	};
-
 
 	$scope.loadStatsData = function(  )
     {
         $scope.flagLoading = true;
-        NProgress.start();
 
         var request =
-        $http.get( CONSTANTS.contextPath + "/matches/" + $routeParams.id + "/stats");
+        $http.get( CONSTANTS.contextPath + "/matches/" + $routeParams.id + "/stats" );
         request.success( function( response )
         {
             $scope.stats = response;
             $scope.flagLoading = false;
-            NProgress.done();
+            $scope.calculateStats();
         } );
         request.error( function( error )
         {
+            console.log(error);
             $scope.flagLoading = false;
-            NProgress.done();
         });
     };
 
 
+    /**
+    *
+    **/
+    $scope.calculateStats = function(){
+        debugger;
+        var pointsLocal = 0;
+        for (var i in $scope.stats){
+            if( $scope.stats[i].typeTeam == 'LOCAL' &&  $scope.stats[i].type == "PTS"){
+                pointsLocal = pointsLocal + $scope.stats[i].value;
+            }
+        }
+        $scope.match.scoreLocal = pointsLocal;
+    }
+
 	$scope.loadData();
-
-
 
 }]);

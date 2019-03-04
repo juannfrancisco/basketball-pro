@@ -12,6 +12,7 @@ app.config(['$routeProvider', '$controllerProvider',function($routeProvider, $co
     .when('/team/:nameURL/schedule',{controller:'TeamScheduleController',templateUrl: 'pages/team-schedule.html'})
     .when('/team/:nameURL/last-results',{controller:'TeamLastResultController',templateUrl: 'pages/team-last-results.html'})
     .when('/teams',{controller:'TeamController',templateUrl: 'pages/teams/teams.html'})
+    .when('/games/:id',{controller:'GameProfileController',templateUrl: 'pages/games/game-profile.html'})
     .otherwise({redirectTo:'/'});
 }]);
 

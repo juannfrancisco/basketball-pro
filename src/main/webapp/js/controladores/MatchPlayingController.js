@@ -6,8 +6,8 @@ app.controller("MatchPlayingController", ['$scope', '$http', '$routeParams', '$i
 function($scope, $http, $routeParams, $interval,$uibModal, $window)
 {
 	$scope.flagLoading = true;
-	$scope.timeInit = 20;
-	$scope.time = 20;
+	$scope.timeInit = 600;
+	$scope.time = $scope.timeInit;
 	$scope.timetext = "00:00:00";
 	$scope.score = { visitor:0, local:0 };
 	$scope.scoreText = { visitor:{d1:0, d2:0, d3:0}, local:{ d1:0, d2:0, d3:0 } };
@@ -96,8 +96,6 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window)
 	 * 
 	 */
 	$scope.startCount = function(){
-	    debugger;
-
 	    if( $scope.stateWatch == "stop" ){
 	        $scope.quarter.push( {name: ($scope.quarter.length + 1 ) + "quarter",points:[]} );
 	    }
@@ -176,7 +174,7 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window)
 		modalInstance.result.then(function (selectedItem) {
 			$scope.match[type].formacion = true;
 	    }, function () {
-	      console.log("xxssss");
+	      //TODO : Cancel option
 	    });
 	};
 
@@ -203,8 +201,10 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window)
 		
 		modalInstance.result.then(function (stat) {
 
+		    stat.quarter = $scope.quarter.length;
+
             $scope.addMatchStatLocal(stat);
-		    //$scope.addMatchStat(stat);
+		    $scope.addMatchStat(stat);
 
             if(stat.type == "PTS"){
                 stat.quarter = $scope.quarter.length;
@@ -251,7 +251,13 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window)
         }
 	}
 
+    /**
+    *
+    */
 	$scope.addMatchStat = function(stat){
+
+	    stat.match = {oid: $scope.match.oid};
+
         var request = $http.put( CONSTANTS.contextPath + "/matchstats/", stat);
         request.success( function( response )
         {

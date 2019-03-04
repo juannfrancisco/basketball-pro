@@ -28,9 +28,10 @@ public class MatchStat {
 
     private Integer quarter;
 
-
     private TypeStat type;
     private double value;
+
+    private TypeTeam typeTeam;
 
 
     /**
@@ -87,5 +88,14 @@ public class MatchStat {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+
+    public TypeTeam getTypeTeam() {
+        return typeTeam;
+    }
+
+    public void setTypeTeam(TypeTeam typeTeam) {
+        this.typeTeam = typeTeam;
     }
 }

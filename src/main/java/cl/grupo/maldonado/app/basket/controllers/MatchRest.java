@@ -73,6 +73,12 @@ public class MatchRest {
 	public List<MatchStat> findByMatch(@PathVariable("oid") Integer oid ){
 		return matchStatService.findByMatch(new Match(oid));
 	}
+
+	@RequestMapping(method = RequestMethod.POST, value="/{oid}/state")
+	public void updateState(@PathVariable("oid") Integer oid ,  @RequestBody Match match){
+		service.updateState(match);
+	}
+
 	
 
 }

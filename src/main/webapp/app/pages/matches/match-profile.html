@@ -36,23 +36,45 @@
 			</div>
 
 			<div class="row" >
-				<div class="col-md-12" >
+				<div class="col-md-6" >
 					<table class="table">
 						<thead>
 							<tr>
+								<th>Jugador</th>
 								<th>Cuarto</th>
 								<th>Stat</th>
-								<th>Valor</th>
 								<th>Equipo</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="stat in stats" >
+							<tr data-ng-repeat="stat in stats" ng-if="stat.typeTeam=='LOCAL'">
+								<td>{{stat.player.name}} {{stat.player.lastName}}</td>
 								<td>{{stat.quarter}}</td>
-								<td>{{stat.type}}</td>
-								<td>{{stat.value}}</td>
-								<td>{{stat.typeTeam}}</td>
+								<td>{{stat.value}} {{stat.type}}</td>
+								<td>{{stat.player.currentTeam.name}}</td>
 							</tr>
+						</tbody>
+
+					</table>
+				</div>
+
+				<div class="col-md-6" >
+					<table class="table">
+						<thead>
+						<tr>
+							<th>Jugador</th>
+							<th>Cuarto</th>
+							<th>Stat</th>
+							<th>Equipo</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr data-ng-repeat="stat in stats" ng-if="stat.typeTeam=='VISITOR'">
+							<td>{{stat.player.name}} {{stat.player.lastName}}</td>
+							<td>{{stat.quarter}}</td>
+							<td>{{stat.value}} {{stat.type}}</td>
+							<td>{{stat.player.currentTeam.name}}</td>
+						</tr>
 						</tbody>
 
 					</table>

@@ -10,4 +10,7 @@ import java.util.List;
 public interface MatchStatRepository extends JpaRepository<MatchStat, Integer> {
 
     List<MatchStat> findByMatch(Match match);
+
+
+
 }

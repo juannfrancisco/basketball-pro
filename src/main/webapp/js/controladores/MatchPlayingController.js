@@ -183,6 +183,7 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window)
 	 * 
 	 */
 	$scope.optionPlayer = function( player, type ){
+	    debugger;
 		var modalInstance = $uibModal.open({
             animation: true,
             backdrop : false,
@@ -192,6 +193,9 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window)
             resolve: {
             	player: function () {
                   return player;
+                },
+                type : function (){
+                    return type;
                 },
                 score : function(){
                 	return $scope.score[type];
@@ -375,8 +379,8 @@ function($scope,$uibModalInstance, match )
 
 
 
-app.controller("ModalOptionPlayer", ['$scope','$uibModalInstance', 'player', 'score',
-function($scope,$uibModalInstance, player, score )
+app.controller("ModalOptionPlayer", ['$scope','$uibModalInstance', 'player', 'type', 'score',
+function($scope,$uibModalInstance, player, type, score )
 {
 	$scope.player = player;
 	console.log(player);
@@ -384,8 +388,8 @@ function($scope,$uibModalInstance, player, score )
 	/**
 	 * 
 	 */
-	$scope.addStat = function(value,type){
-		$uibModalInstance.close( {value:value, type:type, player: player} );
+	$scope.addStat = function(value,typeStat){
+		$uibModalInstance.close( {value:value, type:typeStat, player: player, typeTeam: type.toUpperCase()} );
 	}
 	
 	/**

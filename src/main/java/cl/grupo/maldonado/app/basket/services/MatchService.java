@@ -1,11 +1,10 @@
 package cl.grupo.maldonado.app.basket.services;
 
-import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.core.game.MatchState;
 import cl.grupo.maldonado.app.basket.repositories.MatchRepository;
 import cl.grupo.maldonado.app.basket.repositories.PlayerRepository;
-import cl.grupo.maldonado.app.basket.repositories.TeamRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +36,10 @@ public class MatchService {
     public void save(Match match){
         match.setState( MatchState.PENDING );
         repository.save(match);
+    }
+
+    public void updateState(Match match){
+        repository.updateStateById( match.getOid(), match.getState() );
     }
 
 }

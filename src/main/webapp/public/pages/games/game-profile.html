@@ -71,25 +71,22 @@
                                                         <th>2</th>
                                                         <th>3</th>
                                                         <th>4</th>
-                                                        <th>T</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     <tr>
                                                         <th>{{match.local.name}}</th>
-                                                        <td>30</td>
-                                                        <td>31</td>
-                                                        <td>22</td>
-                                                        <td>24</td>
-                                                        <td>107</td>
+                                                        <td>{{scoreQuarterLocal[1]}}</td>
+                                                        <td>{{scoreQuarterLocal[2]}}</td>
+                                                        <td>{{scoreQuarterLocal[3]}}</td>
+                                                        <td>{{scoreQuarterLocal[4]}}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>{{match.visitor.name}}</th>
-                                                        <td>22</td>
-                                                        <td>34</td>
-                                                        <td>20</td>
-                                                        <td>26</td>
-                                                        <td>102</td>
+                                                        <td>{{scoreQuarterVisitor[1]}}</td>
+                                                        <td>{{scoreQuarterVisitor[2]}}</td>
+                                                        <td>{{scoreQuarterVisitor[3]}}</td>
+                                                        <td>{{scoreQuarterVisitor[4]}}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -269,12 +266,88 @@
                                 </div>
                             </div>
                         </section>
+
+
+
                     </div>
                     <!-- Game Result / End -->
+
+
 
                 </div>
             </div>
             <!-- Game Scoreboard / End -->
+
+
+            <div class="card card--has-table">
+                <div class="card__header card__header--has-btn">
+                    <h4>Estadisticas {{match['local'].name}}</h4>
+                </div>
+                <div class="card__content">
+                    <div class="table-responsive">
+                        <table class="table table--lg team-roster-table">
+                            <thead>
+                            <tr>
+                                <th class="team-roster-table__number">NBR</th>
+                                <th class="team-roster-table__name">Player Name</th>
+                                <th class="team-roster-table__position hidden-xs hidden-sm">Position</th>
+                                <th class="team-roster-table__age">Pts</th>
+                                <th class="team-roster-table__height">Ast</th>
+                                <th class="team-roster-table__weight">Reb</th>
+                                <th class="team-roster-table__college">Fouls</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-ng-repeat="stat in stats" data-ng-if="stat.typeTeam=='LOCAL'" >
+                                <td class="team-roster-table__number">{{stat.player.number}}</td>
+                                <td class="team-roster-table__name">{{stat.player.name}} {{stat.player.lastName}}</td>
+                                <td class="team-roster-table__position hidden-xs hidden-sm">{{stat.player.position}}</td>
+                                <td class="team-roster-table__age">{{stat.value}}</td>
+                                <td class="team-roster-table__height">0</td>
+                                <td class="team-roster-table__weight">0</td>
+                                <td class="team-roster-table__college">0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card card--has-table">
+                <div class="card__header card__header--has-btn">
+                    <h4>Estadisticas - {{match['visitor'].name}}</h4>
+
+                </div>
+                <div class="card__content">
+                    <div class="table-responsive">
+                        <table class="table table--lg team-roster-table">
+                            <thead>
+                            <tr>
+                                <th class="team-roster-table__number">NBR</th>
+                                <th class="team-roster-table__name">Player Name</th>
+                                <th class="team-roster-table__position hidden-xs hidden-sm">Position</th>
+                                <th class="team-roster-table__age">Pts</th>
+                                <th class="team-roster-table__height">Ast</th>
+                                <th class="team-roster-table__weight">Reb</th>
+                                <th class="team-roster-table__college">Fouls</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-ng-repeat="stat in stats" data-ng-if="stat.typeTeam=='VISITOR'" >
+                                <td class="team-roster-table__number">{{stat.player.number}}</td>
+                                <td class="team-roster-table__name">{{stat.player.name}} {{stat.player.lastName}}</td>
+                                <td class="team-roster-table__position hidden-xs hidden-sm">{{stat.player.position}}</td>
+                                <td class="team-roster-table__age">{{stat.value}}</td>
+                                <td class="team-roster-table__height">0</td>
+                                <td class="team-roster-table__weight">0</td>
+                                <td class="team-roster-table__college">0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

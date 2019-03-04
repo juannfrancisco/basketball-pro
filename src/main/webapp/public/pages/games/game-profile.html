@@ -298,6 +298,41 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <tr data-ng-repeat="player in statsPlayerLocal" >
+                                <td class="team-roster-table__number">{{player.number}}</td>
+                                <td class="team-roster-table__name">{{player.name}} {{player.lastName}}</td>
+                                <td class="team-roster-table__position hidden-xs hidden-sm">{{player.position}}</td>
+                                <td class="team-roster-table__age">{{player.PTS}}</td>
+                                <td class="team-roster-table__height">0</td>
+                                <td class="team-roster-table__weight">0</td>
+                                <td class="team-roster-table__college">0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card card--has-table">
+                <div class="card__header card__header--has-btn">
+                    <h4>Estadisticas {{match['local'].name}}</h4>
+                </div>
+                <div class="card__content">
+                    <div class="table-responsive">
+                        <table class="table table--lg team-roster-table">
+                            <thead>
+                            <tr>
+                                <th class="team-roster-table__number">NBR</th>
+                                <th class="team-roster-table__name">Player Name</th>
+                                <th class="team-roster-table__position hidden-xs hidden-sm">Position</th>
+                                <th class="team-roster-table__age">Pts</th>
+                                <th class="team-roster-table__height">Ast</th>
+                                <th class="team-roster-table__weight">Reb</th>
+                                <th class="team-roster-table__college">Fouls</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <tr data-ng-repeat="stat in stats" data-ng-if="stat.typeTeam=='LOCAL'" >
                                 <td class="team-roster-table__number">{{stat.player.number}}</td>
                                 <td class="team-roster-table__name">{{stat.player.name}} {{stat.player.lastName}}</td>

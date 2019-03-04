@@ -18,7 +18,7 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
     List<Match> findByChampionship(Championship championship);
 
     @Modifying(clearAutomatically = true)
-    @Query("UPDATE Match " +
+    @Query("UPDATE tbl_match " +
             "SET state = :state " +
             "WHERE oid = :oid")
     int updateStateById(@Param("oid") Integer oid,

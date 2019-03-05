@@ -99,11 +99,12 @@ function($scope, $http, $routeParams)
             for( i in team ){
                 if( team[i].oid == player.oid ){
                     team[i][typeStat] = team[i][typeStat] ? team[i][typeStat] + value : value;
-               }else{
-                player[typeStat] = value;
-                team.push( player );
+                    return;
                }
             }
+
+            player[typeStat] = value;
+            team.push( player );
         }
         else{
             player[typeStat] = value;

@@ -36,7 +36,7 @@
 			<span class="media-text ellipsis nm">No se han asignado jugadores al equipo.</span>
 		</div>
 	
-		<a class="list-group-item " ng-repeat="player in players | filter:q as results" href="javascript:void(0)" ng-click="selectPlayer(player)">
+		<a class="list-group-item " ng-repeat="player in players | orderBy: 'number'| filter:q as results" href="javascript:void(0)" ng-click="selectPlayer(player)">
 			<span class="badge badge-titular">{{player.titular? 'titular' : ''}}</span>
 			<span class="pull-left avatar mr10">
 				<span class="badge badge-number-player">{{player.number}}</span>

@@ -66,6 +66,7 @@ function($scope, $http, $routeParams)
 
                pointsLocal = pointsLocal + $scope.stats[i].value;
             }else{
+                $scope.addStatPlayer( $scope.statsPlayerVisitor , $scope.stats[i].player, $scope.stats[i].type, $scope.stats[i].value );
                 pointsVisitor = pointsVisitor + $scope.stats[i].value;
             }
         }

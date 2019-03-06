@@ -40,5 +40,30 @@ function( $scope, $http, $location,$routeParams, $location )
             $scope.flagLoading = false;
         });
     };
+
+    $scope.loadPlayerData = function(  ){
+
+        var url= $location.url().split("/");
+        if(url[3] == "roster" &&  url[4]){
+
+            $scope.flagLoading = true;
+            var request =
+            $http.get( CONSTANTS.contextPath + "/players/" + url[4] );
+            request.success( function( response )
+            {
+                $scope.player = response;
+                $scope.flagLoading = false;
+            } );
+            request.error( function( error )
+            {
+                console.log(error);
+                $scope.flagLoading = false;
+            });
+        }
+
+    }
+
+
+    $scope.loadPlayerData();
     $scope.loadData();
 }]);

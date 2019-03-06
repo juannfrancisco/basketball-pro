@@ -3,7 +3,7 @@
     <!-- Team Roster: Slider -->
     <div class="team-roster team-roster--slider">
         <!-- Player #0-->
-        <div class="team-roster__item" ng-repeat="player in players">
+        <div class="team-roster__item" ng-repeat="player in players | orderBy :'number'">
             <!-- Player Photo -->
             <figure class="team-roster__img">
                 <img src="assets/images/samples/rosterv2_player_01.png" alt="">
@@ -25,7 +25,7 @@
             <!-- Player Details / End -->
             <!-- FAB (More Info)-->
             <div class="team-roster__player-fab">
-                <a href="player-overview.html" class="team-roster__player-more">
+                <a href="#/team/{{team.nameURL}}/roster/{{player.oid}}" class="team-roster__player-more">
                     <span class="btn-fab btn-fab--sm"></span>
                     <span class="team-roster__player-fab-txt">Check the<br>Player's Bio</span>
                 </a>
@@ -59,7 +59,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="player in players">
+                            <tr ng-repeat="player in players | orderBy :'number'">
                                 <td class="team-roster-table__number">{{player.number}}</td>
                                 <td class="team-roster-table__name">{{player.name}} {{player.lastName}}</td>
                                 <td class="team-roster-table__position hidden-xs hidden-sm">{{msgI18n(player.position)}} </td>

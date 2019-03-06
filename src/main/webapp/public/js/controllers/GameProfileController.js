@@ -113,38 +113,6 @@ function($scope, $http, $routeParams)
         }
     }
 
-
-    /**
-
-
-
-
-
-
-
-
-
-    $scope.statsPlayerLocal = {};
-    $scope.statsPlayerVisitor = {};
-
-    $scope.groupByPlayer = function(){
-
-        for (var i in $scope.stats){
-            if( $scope.stats[i].typeTeam == 'LOCAL' && $scope.stats[i].type == "PTS" ){
-                $scope.statsPlayerLocal[ $scope.stats[i].player.oid ] = $scope.statsPlayerLocal[ $scope.stats[i].player.oid ] ? [];
-                $scope.statsPlayerLocal[ $scope.stats[i].player.oid ].push();
-            }else{
-
-            }
-        }
-
-    }
-
-
-
-
-    */
-
 	$scope.loadData();
 
 }]);

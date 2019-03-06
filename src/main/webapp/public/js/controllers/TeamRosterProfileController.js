@@ -2,10 +2,10 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("TeamRosterController", ['$scope', '$http', '$routeParams', '$timeout',
+app.controller("TeamRosterProfileController", ['$scope', '$http', '$routeParams', '$timeout',
 function($scope, $http, $routeParams, $timeout)
 {
-    $scope.team = $scope.$parent.team;
+
 	$scope.flagLoading = true;
 	$scope.players = [];
 

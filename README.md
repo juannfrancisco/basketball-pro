@@ -1,5 +1,7 @@
-appengine-standard-archetype
+Basketball Pro
 ============================
+
+Maldonado Tech
 
 This is a generated App Engine Standard Java application from the appengine-standard-archetype archetype.
 
@@ -7,9 +9,12 @@ See the [Google App Engine standard environment documentation][ae-docs] for more
 detailed instructions.
 
 [ae-docs]: https://cloud.google.com/appengine/docs/java/
+[todo] : https://trello.com/b/ZM2ZxLVG/basket-pro
 
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Springboot
+* Angular.js
 * [Maven](https://maven.apache.org/download.cgi) (at least 3.5)
 * [Google Cloud SDK](https://cloud.google.com/sdk/) (aka gcloud)
 
@@ -25,6 +30,7 @@ detailed instructions.
 
 ### Deploying
 
+    mvn -Pdefault -DskipTests appengine:deploy
     mvn appengine:deploy
 
 ## Testing

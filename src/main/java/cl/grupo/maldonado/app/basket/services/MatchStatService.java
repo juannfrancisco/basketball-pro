@@ -1,5 +1,6 @@
 package cl.grupo.maldonado.app.basket.services;
 
+import cl.grupo.maldonado.app.basket.core.Player;
 import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.core.game.MatchStat;
 import cl.grupo.maldonado.app.basket.core.game.MatchState;
@@ -28,6 +29,9 @@ public class MatchStatService {
     }
 
 
+    public List<MatchStat> findByPlayer(Player player){
+        return repository.findByPlayer( player );
+    };
 
     public void deleteById( Integer oid ){
         repository.deleteById(oid);

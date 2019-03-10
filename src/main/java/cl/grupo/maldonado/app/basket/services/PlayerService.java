@@ -16,7 +16,6 @@ public class PlayerService {
     @Autowired
     private PlayerRepository repository;
 
-
     public List<Player> listAll(){
         return repository.findAll();
     }

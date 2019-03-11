@@ -40,7 +40,7 @@
         
         	
         
-        	<div class="col-xs-6 col-sm-3 col-md-2" ng-repeat="e in teams | filter:q as results">
+        	<div class="col-xs-6 col-sm-3 col-md-2" ng-repeat="e in teams | orderBy:'name' | filter:q as results">
         		<div class="thumbnail thumbnail-album animation animating  fadeInLeft" ng-click="ref( '/team/'+ e.oid );">
                    <div class="media">
                        <div class="indicator"><span class="spinner"></span></div>

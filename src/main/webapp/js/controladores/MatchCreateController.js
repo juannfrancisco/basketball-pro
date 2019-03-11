@@ -46,7 +46,7 @@ function($scope, $http, $location , GenericService, $routeParams ){
 		{
 			console.log( response );
 			NProgress.done();
-			$location.path('/match/'+ response.oid);
+			$location.path('/matches');
 		} );
 		request.error( function( error )
 		{

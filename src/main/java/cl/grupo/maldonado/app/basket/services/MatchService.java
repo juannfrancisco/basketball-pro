@@ -49,6 +49,8 @@ public class MatchService {
         double scoreLocal = getScore( TypeTeam.LOCAL , stats);
         double scoreVisitor = getScore( TypeTeam.VISITOR , stats);
 
+        //TODO : ADD STATS GLOBAL ChampionshipTeam
+
         repository.updateStateById( match.getOid(),
                 match.getState(),
                 (int)scoreLocal,

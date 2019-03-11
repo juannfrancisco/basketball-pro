@@ -55,7 +55,7 @@
 					<div class="form-group">
 		                 <label class="col-sm-3 control-label">Equipo Local</label>
 		                 <div class="col-sm-9">
-		                     <select class="form-control" ng-model="match.local" ng-options="x.name for x in teams" ></select>
+		                     <select class="form-control" ng-model="match.local" ng-options="x.name for x in teams | orderBy:'name'" ></select>
 		                 </div>
 		             </div>
 		             
@@ -63,7 +63,7 @@
 		             <div class="form-group">
 		                 <label class="col-sm-3 control-label">Equipo Visitante</label>
 		                 <div class="col-sm-9">
-		                     <select class="form-control" ng-model="match.visitor" ng-options="x.name for x in teams" ></select>
+		                     <select class="form-control" ng-model="match.visitor" ng-options="x.name for x in teams | orderBy:'name'" ></select>
 		                 </div>
 		             </div>
 		             

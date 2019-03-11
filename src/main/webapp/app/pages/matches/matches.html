@@ -34,7 +34,7 @@
         
         <div class="row" >
         		<div class="list-group" >
-	        		<div class="list-group-item" ng-repeat="e in matches | orderBy :'date' | filter:q as results" ng-click="ref('/match/'+ e.oid)">
+	        		<div class="list-group-item" ng-repeat="e in matches | orderBy :'-date' | filter:q as results" ng-click="ref('/match/'+ e.oid)">
 	        			<div class="row text-center" style="background: #475577;color: white;padding: 5px;">
 							<i class="ico-calendar"></i>
 							{{e.date | date}}

@@ -39,14 +39,14 @@
                             <th class="team-result__vs">Versus</th>
                             <th class="team-result__score">Puntaje</th>
                             <th class="team-result__status">Status</th>
-                            <th class="team-result__points">HI Points</th>
+                            <th class="team-result__points">Cancha</th>
                             <th class="team-result__rebounds">HI Rebounds</th>
                             <th class="team-result__assists">HI Assists</th>
                             <th class="team-result__steals">HI Steals</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <tr data-ng-repeat="match in matches | orderBy:'date'" data-ng-click="goGame(match)" >
+                            <tr data-ng-repeat="match in matches | orderBy:'-date'" data-ng-click="goGame(match)" >
                                 <td class="team-result__date">{{match.date | date}}</td>
                                 <td class="team-result__vs">
                                     <div class="team-meta">
@@ -61,7 +61,7 @@
                                 </td>
                                 <td class="team-result__score"><span class="team-result__game">{{match.result}}</span> {{match.scoreLocal}}-{{match.scoreVisitor}}</td>
                                 <td class="team-result__status">{{match.status}}</td>
-                                <td class="team-result__points">-</td>
+                                <td class="team-result__points">{{match.court.name}}</td>
                                 <td class="team-result__rebounds">-</td>
                                 <td class="team-result__assists">-</td>
                                 <td class="team-result__steals">-</td>

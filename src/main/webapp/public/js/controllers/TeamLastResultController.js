@@ -21,11 +21,11 @@ function($scope, $http, $routeParams, $timeout,$location)
 			    if( $scope.matches[i].local.nameURL == $routeParams.nameURL ){
                     $scope.matches[i].status = "Local";
                     $scope.matches[i].versus = $scope.matches[i].visitor;
-                    $scope.matches[i].result = $scope.matches[i].local > $scope.matches[i].visitor?'W':'L';
+                    $scope.matches[i].result = $scope.matches[i].scoreLocal > $scope.matches[i].scoreVisitor?'W':'L';
 			    }else{
 			        $scope.matches[i].status = "Visita";
 			        $scope.matches[i].versus = $scope.matches[i].local;
-			        $scope.matches[i].result = $scope.matches[i].visitor > $scope.matches[i].local?'W':'L';
+			        $scope.matches[i].result = $scope.matches[i].scoreVisitor > $scope.matches[i].scoreLocal?'W':'L';
 			    }
 			}
 			$scope.flagLoading = false;

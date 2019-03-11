@@ -5,35 +5,54 @@
 			style="background-position: 50% 30px; background-image: url('../image/stellar/background8.jpg') !important; ">
 			    <div class="overlay pattern pattern10"></div>
 			    <div class="container" >
-			    		<div class="match-profile-header row mt10" >
-			    			<div class="team col-xs-6 text-center" >
-			    				<div class="locale">Local</div>
-			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
-	                       	 alt="Cover" class="unveiled img-rounded">
-	                       	 <div class="name">{{match.local.name}}</div>
-			    			</div>
-			    			<div class="team col-xs-6 text-center" >
-			    				<div class="locale" >Visita</div>
-			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
-	                       	 alt="Cover" class="unveiled img-rounded">
-	                       	 <div class="name">{{match.visitor.name}}</div>
-			    			</div>
-			    		</div>
+					<div class="match-profile-header row mt10" >
+						<div class="team col-xs-6 text-center" >
+							<div class="locale">Local</div>
+							<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png"
+						 alt="Cover" class="unveiled img-rounded">
+						 <div class="name">{{match.local.name}}</div>
+						</div>
+						<div class="team col-xs-6 text-center" >
+							<div class="locale" >Visita</div>
+							<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png"
+						 alt="Cover" class="unveiled img-rounded">
+						 <div class="name">{{match.visitor.name}}</div>
+						</div>
+					</div>
 			    </div>
 			</section>
 	        
-			<div ng-show="match.state=='PENDING'" >
-				 <div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
+			<div>
+				<div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
+					<div class="col-xs-6 col-md-4 text-right fsize24">
+						{{match.scoreLocal}}
+					</div>
+					<div class="col-md-4 text-center hidden-xs hidden-sm">
+
+					</div>
+					<div class="col-xs-6 col-md-4 text-left fsize24">
+						{{match.scoreVisitor}}
+					</div>
+				</div>
+
+				 <div class="row pb15" style="border-bottom:1px solid #EBEBEB;" ng-show="match.state=='PENDING'">
 					<div class="col-xs-12 text-center">
-						<button class="btn btn-success btn-block"  value="button" ng-click="ref('/match/'+match.oid+'/playing')">Inicar Partido</button>
+						<button class="btn btn-success btn-block"  value="button"
+								ng-click="ref('/match/'+match.oid+'/playing')">Inicar Partido</button>
 					</div>
 				 </div>
 
 				<div class="row pb15 pt15" style="border-bottom:1px solid #EBEBEB;" >
-					<div class="col-xs-6 text-center"> <i class="ico-calendar"></i> {{match.date | date}}</div>
-					<div class="col-xs-6 text-center"> <i class="ico-time"></i> {{match.date | date :'HH:mm:ss'}}</div>
+					<div class="col-xs-6 text-center">
+						<i class="ico-calendar"></i> {{match.date | date}}
+						<i class="ico-time"></i> {{match.date | date :'HH:mm:ss'}}
+					</div>
+					<div class="col-xs-6 text-center">
+						{{match.court.name}}
+					</div>
 				</div>
 			</div>
+
 
 			<div class="row" >
 				<div class="col-md-6" >
@@ -84,7 +103,3 @@
         </div>
 	</div>
 </section>
-        <script>
-$.stellar({horizontalScrolling: false});
-</script>
-

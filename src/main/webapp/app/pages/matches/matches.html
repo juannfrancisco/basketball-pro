@@ -34,8 +34,13 @@
         
         <div class="row" >
         		<div class="list-group" >
-	        		<div class="list-group-item" ng-repeat="e in matches | filter:q as results" ng-click="ref('/match/'+ e.oid)">
-	        			<div class="row text-center" style="background: #475577;color: white;padding: 5px;"><i class="ico-calendar"></i> {{e.date | date}}</div>
+	        		<div class="list-group-item" ng-repeat="e in matches | orderBy :'date' | filter:q as results" ng-click="ref('/match/'+ e.oid)">
+	        			<div class="row text-center" style="background: #475577;color: white;padding: 5px;">
+							<i class="ico-calendar"></i>
+							{{e.date | date}}
+							<i class="ico-time"></i>
+							{{e.date | date :'HH:mm:ss'}}
+						</div>
 	        			<div class="row" >
 		        			<div class="col-md-4 col-xs-4 text-center">
 		        				<div><img ng-src="../image/icons/teams-default4.png" style="width:70px;"/></div>
@@ -48,6 +53,11 @@
 		        				<div class="fsize11" >{{e.visitor.name}}</div>
 		        			</div>
 	        			</div>
+						<div class="row">
+							<div class="col-md-12 text-center pb10 pt10" style="background:#ebebeb;">
+								{{e.court.name}}
+							</div>
+						</div>
 	        		</div>
         		</div>
         

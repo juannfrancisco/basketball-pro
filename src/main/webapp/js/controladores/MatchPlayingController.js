@@ -2,8 +2,8 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador MatchPlayingController
  *************************************************************/
-app.controller("MatchPlayingController", ['$scope', '$http', '$routeParams', '$interval', '$uibModal', '$window',
-function($scope, $http, $routeParams, $interval,$uibModal, $window)
+app.controller("MatchPlayingController", ['$scope', '$http', '$routeParams', '$interval', '$uibModal', '$window', '$location',
+function($scope, $http, $routeParams, $interval,$uibModal, $window, $location)
 {
 	$scope.flagLoading = true;
 	$scope.timeInit = 600;
@@ -54,6 +54,26 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window)
 	    if( $window.localStorage && $window.localStorage.getItem( MATCH+ $scope.match.oid )  ){
 	        $window.localStorage.removeItem(MATCH+ $scope.match.oid);
 	    }
+	}
+
+	$scope.endMatch = function(){
+
+        //TODO : add alert
+	    var request = $http.post(
+	        CONSTANTS.contextPath + "/matches/" + $routeParams.id + "/state",
+	        {oid:$scope.match.oid, state : 'FINALIZED'} );
+
+        request.success( function( response )
+        {
+            $location.path( "/match/"+ $scope.match.oid );
+            $scope.flagLoading = false;
+            NProgress.done();
+        } );
+        request.error( function( error )
+        {
+            $scope.flagLoading = false;
+            NProgress.done();
+        });
 	}
 
 

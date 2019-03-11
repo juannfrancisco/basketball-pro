@@ -1,12 +1,13 @@
 package cl.grupo.maldonado.app.basket.services;
 
-import cl.grupo.maldonado.app.basket.core.game.Match;
-import cl.grupo.maldonado.app.basket.core.game.MatchState;
+import cl.grupo.maldonado.app.basket.core.game.*;
 import cl.grupo.maldonado.app.basket.repositories.MatchRepository;
+import cl.grupo.maldonado.app.basket.repositories.MatchStatRepository;
 import cl.grupo.maldonado.app.basket.repositories.PlayerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class MatchService {
 
     @Autowired
     private MatchRepository repository;
+
+    @Autowired
+    private MatchStatRepository matchStatRepository;
 
     @Autowired
     private PlayerRepository playerRepository;
@@ -38,8 +42,26 @@ public class MatchService {
         repository.save(match);
     }
 
+    @Transactional
     public void updateState(Match match){
-        repository.updateStateById( match.getOid(), match.getState() );
+
+        List<MatchStat> stats =  matchStatRepository.findByMatch( match);
+        double scoreLocal = getScore( TypeTeam.LOCAL , stats);
+        double scoreVisitor = getScore( TypeTeam.VISITOR , stats);
+
+        repository.updateStateById( match.getOid(),
+                match.getState(),
+                (int)scoreLocal,
+                (int)scoreVisitor);
+    }
+
+
+    public double getScore(TypeTeam type, List<MatchStat> stats){
+        return stats.stream()
+                .filter(matchStat -> matchStat.getTypeTeam().equals( type ))
+                .filter( matchStat -> matchStat.getType().equals(TypeStat.PTS) )
+                .mapToDouble( value ->  value.getValue() )
+                .sum();
     }
 
 }

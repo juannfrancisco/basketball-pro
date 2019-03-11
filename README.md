@@ -22,6 +22,14 @@ detailed instructions.
 
     gcloud init
     gcloud auth application-default login
+    gcloud create app
+
+
+## Setup Local Env.
+
+   docker run --name db-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:5.6
+
+
 
 ## Maven
 ### Running locally

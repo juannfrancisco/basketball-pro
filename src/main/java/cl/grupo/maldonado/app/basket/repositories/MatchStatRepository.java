@@ -16,8 +16,7 @@ public interface MatchStatRepository extends JpaRepository<MatchStat, Integer> {
 
     List<MatchStat> findByPlayer(Player player);
 
-    @Query(
-            "SELECT type, sum(value) FROM tbl_match_stat where player_oid=:oid group by type")
+    @Query("SELECT type, sum(value) FROM tbl_match_stat where player_oid=:oid group by type")
     List<MatchStat> getStatsByPlayer(Integer oid);
 
 

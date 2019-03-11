@@ -1,7 +1,5 @@
 package cl.grupo.maldonado.app.basket.repositories;
 
-
-import cl.grupo.maldonado.app.basket.core.Coach;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.core.game.MatchState;
@@ -19,8 +17,12 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 
     @Modifying(clearAutomatically = true)
     @Query("UPDATE tbl_match " +
-            "SET state = :state " +
+            "SET state = :state ," +
+            "scoreVisitor= :scoreVisitor ," +
+            "scoreLocal= :scoreLocal " +
             "WHERE oid = :oid")
     int updateStateById(@Param("oid") Integer oid,
-                        @Param("state") MatchState state);
+                        @Param("state") MatchState state,
+                        @Param("scoreLocal") int scoreLocal,
+                        @Param("scoreVisitor") int scoreVisitor);
 }

@@ -17,6 +17,9 @@ function($scope, $http, $routeParams)
 		request.success( function( response )
 		{
 			$scope.match = response;
+
+			$scope.match.result = $scope.match.scoreLocal > $scope.match.scoreVisitor;
+
 			$scope.loadStatsData();
 			$scope.flagLoading = false;
 		} );
@@ -56,7 +59,7 @@ function($scope, $http, $routeParams)
     $scope.scoreQuarterVisitor = {};
 
     $scope.calculateStats = function(){
-    debugger;
+
         var pointsLocal = 0;
         var pointsVisitor = 0;
         for (var i in $scope.stats){
@@ -94,7 +97,7 @@ function($scope, $http, $routeParams)
 
 
     $scope.addStatPlayer = function( team, player, typeStat, value ){
-        debugger;
+
 
         if( team.length > 0 ){
             for( i in team ){

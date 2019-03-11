@@ -11,7 +11,6 @@
             <div class="card">
                 <header class="card__header card__header--has-btn">
                     <h4>Marcador del Juego</h4>
-                    <a href="#" class="btn btn-default btn-outline btn-xs card-header__button">Check previous Results</a>
                 </header>
                 <div class="card__content">
 
@@ -20,7 +19,7 @@
                         <section class="game-result__section">
                             <header class="game-result__header">
                                 <h3 class="game-result__title">{{match.championship.name}}</h3>
-                                <time class="game-result__date" datetime="2017-03-17">{{match.date}}</time>
+                                <time class="game-result__date" datetime="{{match.date | date}}">{{match.date | date}}</time>
                             </header>
                             <div class="game-result__content">
 
@@ -38,9 +37,20 @@
 
                                 <div class="game-result__score-wrap">
                                     <div class="game-result__score">
-                                        <span class="game-result__score-result game-result__score-result--winner">{{match.scoreLocal}}</span>
+                                        <span class="game-result__score-result"
+                                                data-ng-class="{
+                                                'game-result__score-result--winner': match.result,
+                                                'game-result__score-result--loser': !match.result,
+                                                                }">
+                                            {{match.scoreLocal}}
+                                        </span>
                                         <span class="game-result__score-dash">-</span>
-                                        <span class="game-result__score-result game-result__score-result--loser">{{match.scoreVisitor}}</span>
+                                        <span class="game-result__score-result"
+                                              data-ng-class="{
+                                                'game-result__score-result--winner': !match.result,
+                                                'game-result__score-result--loser': match.result,
+                                                                }">
+                                        {{match.scoreVisitor}}</span>
                                     </div>
                                     <div class="game-result__score-label">Resultado Final</div>
                                 </div>

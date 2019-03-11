@@ -5,7 +5,9 @@ import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.championship.ChampionshipState;
 import cl.grupo.maldonado.app.basket.core.championship.ChampionshipTeam;
+import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.repositories.ChampionshipTeamRepository;
+import cl.grupo.maldonado.app.basket.repositories.MatchRepository;
 import cl.grupo.maldonado.app.basket.repositories.PlayerRepository;
 import cl.grupo.maldonado.app.basket.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class TeamService {
     @Autowired
     private ChampionshipTeamRepository championshipTeamRepo;
 
+    @Autowired
+    private MatchRepository matchRepository;
 
     @Autowired
     private PlayerRepository playerRepository;
@@ -102,6 +106,12 @@ public class TeamService {
         return result;
     }
 
+    public List<Match> findMatchesByName(String name ){
+        Team team = findByName( name );
+        List<Match> result = new ArrayList<>();
+        result = matchRepository.findByVisitorOrLocal(team,team);
+        return result;
+    }
 
     public  List<List<ChampionshipTeam>> findStandingsByName(String name ){
         //Map<String, Object> result = new HashMap<>();

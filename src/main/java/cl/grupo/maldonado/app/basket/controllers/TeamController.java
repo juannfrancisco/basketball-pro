@@ -4,6 +4,7 @@ import cl.grupo.maldonado.app.basket.core.Player;
 import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.championship.ChampionshipTeam;
+import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +58,11 @@ public class TeamController {
         return service.findStandingsByName(name);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/n/{name}/matches")
+    public List<Match> findMatchesByNameURL(@PathVariable("name") String name ){
+        return service.findMatchesByName(name);
+    }
+
     @RequestMapping(method = RequestMethod.DELETE, value="/{oid}")
     public void deleteById( @PathVariable("oid") Integer oid ){
          service.deleteById(oid);
@@ -80,6 +86,9 @@ public class TeamController {
         Team team = new Team(oid);
         service.addPlayer(team, player);
     }
+
+
+
 
 
     @RequestMapping(method = RequestMethod.POST,value="/{oid}/players/{oidPlayer}" )

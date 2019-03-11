@@ -1,5 +1,6 @@
 package cl.grupo.maldonado.app.basket.repositories;
 
+import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.core.game.MatchState;
@@ -14,6 +15,8 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 
 
     List<Match> findByChampionship(Championship championship);
+
+    List<Match> findByVisitorOrLocal(Team teamVisitor, Team teamLocal);
 
     @Modifying(clearAutomatically = true)
     @Query("UPDATE tbl_match " +

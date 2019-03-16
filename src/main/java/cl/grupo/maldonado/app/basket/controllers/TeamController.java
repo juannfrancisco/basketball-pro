@@ -63,6 +63,12 @@ public class TeamController {
         return service.findMatchesByName(name);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/n/{name}/last-match")
+    public Match findLastMatch(@PathVariable("name") String name ){
+        return service.findLastMatch(name);
+    }
+
+
     @RequestMapping(method = RequestMethod.DELETE, value="/{oid}")
     public void deleteById( @PathVariable("oid") Integer oid ){
          service.deleteById(oid);

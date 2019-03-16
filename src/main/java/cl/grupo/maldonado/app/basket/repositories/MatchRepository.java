@@ -4,6 +4,7 @@ import cl.grupo.maldonado.app.basket.core.Team;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.game.Match;
 import cl.grupo.maldonado.app.basket.core.game.MatchState;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -28,4 +29,14 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
                         @Param("state") MatchState state,
                         @Param("scoreLocal") int scoreLocal,
                         @Param("scoreVisitor") int scoreVisitor);
+
+
+
+    @Query( "SELECT m FROM tbl_match m " +
+            "where m.local=:team or " +
+            "m.visitor=:team and " +
+            "m.state=:state " +
+            "order by m.date desc" )
+    List<Match> findLastByTeam(@Param("team")Team team,
+                               @Param("state")MatchState state );
 }

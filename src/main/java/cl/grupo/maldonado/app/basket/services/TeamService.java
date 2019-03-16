@@ -6,6 +6,7 @@ import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.championship.ChampionshipState;
 import cl.grupo.maldonado.app.basket.core.championship.ChampionshipTeam;
 import cl.grupo.maldonado.app.basket.core.game.Match;
+import cl.grupo.maldonado.app.basket.core.game.MatchState;
 import cl.grupo.maldonado.app.basket.repositories.ChampionshipTeamRepository;
 import cl.grupo.maldonado.app.basket.repositories.MatchRepository;
 import cl.grupo.maldonado.app.basket.repositories.PlayerRepository;
@@ -112,6 +113,14 @@ public class TeamService {
         result = matchRepository.findByVisitorOrLocal(team,team);
         return result;
     }
+
+    public Match findLastMatch( String name ){
+        Team team = findByName( name );
+        return matchRepository.findLastByTeam(team, MatchState.FINALIZED).get(0);
+    }
+
+
+
 
     public  List<List<ChampionshipTeam>> findStandingsByName(String name ){
         //Map<String, Object> result = new HashMap<>();

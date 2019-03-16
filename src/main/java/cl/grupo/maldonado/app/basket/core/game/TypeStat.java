@@ -13,6 +13,8 @@ public enum TypeStat {
     STL, //Robo
 
     PTS, //Point
-    MPT //Missing Point
+    MPT, //Missing Point
+
+    PF   //Personal Foul
 
 }

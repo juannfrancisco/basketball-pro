@@ -8,18 +8,14 @@ import javax.persistence.*;
 @Entity(name = "tbl_match_stat")
 public class MatchStat {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer oid;
-
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne( fetch = FetchType.LAZY)
     @JoinColumn
     private Match match;
-
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne( fetch = FetchType.LAZY)
@@ -29,9 +25,14 @@ public class MatchStat {
     private Integer quarter;
 
     private TypeStat type;
+
     private double value;
 
     private TypeTeam typeTeam;
+
+    private Integer teamOid;
+
+    private Integer championshipOid;
 
 
     /**
@@ -97,5 +98,21 @@ public class MatchStat {
 
     public void setTypeTeam(TypeTeam typeTeam) {
         this.typeTeam = typeTeam;
+    }
+
+    public Integer getTeamOid() {
+        return teamOid;
+    }
+
+    public void setTeamOid(Integer teamOid) {
+        this.teamOid = teamOid;
+    }
+
+    public Integer getChampionshipOid() {
+        return championshipOid;
+    }
+
+    public void setChampionshipOid(Integer championshipOid) {
+        this.championshipOid = championshipOid;
     }
 }

@@ -127,7 +127,7 @@
 							<span class="media-text ellipsis nm">No se han asignado jugadores a la formación.</span>
 						</div>
 						<a class="list-group-item " ng-repeat="player in match.local.players | orderBy :'number' "
-						   href="javascript:void(0)" ng-click="optionPlayer(player, 'local' )" ng-show="player.titular">
+						   href="javascript:void(0)" ng-click="optionPlayer(match.local, player, 'local' )" ng-show="player.titular">
 									<span class="pull-left avatar mr10">
 										<span class="badge badge-number-player">{{player.number}}</span>
 						            </span>
@@ -150,7 +150,7 @@
 							<span class="media-text ellipsis nm">No se han asignado jugadores a la formacion.</span>
 						</div>
 						<a class="list-group-item " ng-repeat="player in match.visitor.players | orderBy :'number' "
-						   href="javascript:void(0)" ng-click="optionPlayer(player,'visitor')" ng-show="player.titular">
+						   href="javascript:void(0)" ng-click="optionPlayer(match.visitor, player,'visitor')" ng-show="player.titular">
 									<span class="pull-left avatar mr10">
 										<span class="badge badge-number-player">{{player.number}}</span>
 						            </span>

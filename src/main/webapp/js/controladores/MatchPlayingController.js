@@ -202,7 +202,7 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window, $location)
 	/**
 	 * 
 	 */
-	$scope.optionPlayer = function( player, type ){
+	$scope.optionPlayer = function( team, player, type ){
 	    debugger;
 		var modalInstance = $uibModal.open({
             animation: true,
@@ -217,6 +217,9 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window, $location)
                 type : function (){
                     return type;
                 },
+                team : function (){
+                   return team;
+                },
                 score : function(){
                 	return $scope.score[type];
                 }
@@ -226,6 +229,9 @@ function($scope, $http, $routeParams, $interval,$uibModal, $window, $location)
 		modalInstance.result.then(function (stat) {
 
 		    stat.quarter = $scope.quarter.length;
+            debugger;
+
+            stat.championshipOid = $scope.match.championship.oid;
 
             $scope.addMatchStatLocal(stat);
 		    $scope.addMatchStat(stat);
@@ -399,17 +405,20 @@ function($scope,$uibModalInstance, match )
 
 
 
-app.controller("ModalOptionPlayer", ['$scope','$uibModalInstance', 'player', 'type', 'score',
-function($scope,$uibModalInstance, player, type, score )
+app.controller("ModalOptionPlayer", ['$scope','$uibModalInstance', 'player', 'type', 'team', 'score',
+function($scope,$uibModalInstance, player, type, team,  score )
 {
 	$scope.player = player;
-	console.log(player);
 	
 	/**
 	 * 
 	 */
 	$scope.addStat = function(value,typeStat){
-		$uibModalInstance.close( {value:value, type:typeStat, player: player, typeTeam: type.toUpperCase()} );
+		$uibModalInstance.close( {value:value,
+		type:typeStat,
+		player: player,
+		teamOid:team.oid,
+		typeTeam: type.toUpperCase()} );
 	}
 	
 	/**

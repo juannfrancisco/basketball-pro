@@ -23,11 +23,9 @@ public class MatchStatService {
         return repository.findById( oid).get();
     }
 
-
     public List<MatchStat> findByMatch( Match match ){
         return repository.findByMatch(match);
     }
-
 
     public List<MatchStat> findByPlayer(Player player){
         return repository.findByPlayer( player );

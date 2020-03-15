@@ -6,12 +6,4 @@
         <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
     </system-properties>
 
-    <env-variables>
-        <env-var name="jdbc_username" value="root" />
-        <env-var name="jdbc_password" value="M7auaspxsJhMvDyh" />
-        <!--<env-var name="jdbc_url" value="jdbc:mysql://google/db_basketball?cloudSqlInstance=basket-analytics-232302:us-central1:dbbasket=com.google.cloud.sql.mysql.SocketFactory" />-->
-        <!-- jdbc:mysql://google/db_basketball?cloudSqlInstance=basket-analytics-232302:us-central1:dbbasket=com.google.cloud.sql.mysql.SocketFactory -->
-
-    </env-variables>
-
 </appengine-web-app>

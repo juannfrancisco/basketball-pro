@@ -6,8 +6,9 @@
 /.settings/
 .settings/
 .classpath
+src/main/resources/application.properties
 
-
+.DS_Store
 
 ### IntelliJ IDEA ###
 .idea

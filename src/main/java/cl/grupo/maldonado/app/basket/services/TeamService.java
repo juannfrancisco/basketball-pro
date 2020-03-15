@@ -56,8 +56,8 @@ public class TeamService {
         repository.updateInfoById(team.getOid(),
                 team.getBio(),
                 team.getNameURL(),
-                team.getContact().getPhone(),
-                team.getContact().getEmail(),
+                null != team.getContact() ? team.getContact().getPhone() : null,
+                null != team.getContact() ? team.getContact().getEmail() : null,
                 team.getName());
     }
 

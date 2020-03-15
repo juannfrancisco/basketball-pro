@@ -30,15 +30,17 @@
                             <div class="game-result__content">
 
                                 <!-- 1st Team -->
-                                <div class="game-result__team game-result__team--first">
-                                    <figure class="game-result__team-logo">
-                                        <img src="assets/images/samples/logo-alchemists--sm.png" alt="">
-                                    </figure>
-                                    <div class="game-result__team-info">
-                                        <h5 class="game-result__team-name">{{match.local.name}}</h5>
-                                        <div class="game-result__team-desc"> - </div>
+                                <a href="#/team/{{match.local.nameURL}}" >
+                                    <div class="game-result__team game-result__team--first">
+                                        <figure class="game-result__team-logo">
+                                            <img src="assets/images/samples/logo-alchemists--sm.png" alt="">
+                                        </figure>
+                                        <div class="game-result__team-info">
+                                            <h5 class="game-result__team-name">{{match.local.name}}</h5>
+                                            <div class="game-result__team-desc"> Local </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <!-- 1st Team / End -->
 
                                 <div class="game-result__score-wrap">
@@ -47,19 +49,26 @@
                                         <span class="game-result__score-dash">-</span>
                                         <span class="game-result__score-result game-result__score-result--loser">{{match.scoreVisitor}}</span>
                                     </div>
-                                    <div class="game-result__score-label">Final Score</div>
+                                    <div class="game-result__score-label">
+                                        Final Score
+                                        <div style="color:#9a9da2;">
+                                            {{match.court.name}}
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- 2nd Team -->
-                                <div class="game-result__team game-result__team--second">
-                                    <figure class="game-result__team-logo">
-                                        <img src="assets/images/samples/logo-sharks--sm.png" alt="">
-                                    </figure>
-                                    <div class="game-result__team-info">
-                                        <h5 class="game-result__team-name">{{match.visitor.name}}</h5>
-                                        <div class="game-result__team-desc"> - </div>
+                                <a href="#/team/{{match.visitor.nameURL}}" >
+                                    <div class="game-result__team game-result__team--second">
+                                        <figure class="game-result__team-logo">
+                                            <img src="assets/images/samples/logo-sharks--sm.png" alt="">
+                                        </figure>
+                                        <div class="game-result__team-info">
+                                            <h5 class="game-result__team-name">{{match.visitor.name}}</h5>
+                                            <div class="game-result__team-desc"> Visitante </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <!-- 2nd Team / End -->
                             </div>
                         </section>

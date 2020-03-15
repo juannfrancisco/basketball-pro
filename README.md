@@ -35,6 +35,7 @@ detailed instructions.
 ### Running locally
 
     mvn appengine:run
+    mvn -Dspring.profiles.active=dev spring-boot:run
 
 ### Deploying
 

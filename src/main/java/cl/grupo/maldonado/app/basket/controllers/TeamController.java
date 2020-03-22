@@ -27,43 +27,51 @@ public class TeamController {
 
 
     @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin("*")
     public List<Team> listAllTeams(){
         return service.getAll();
     }
 
 
     @RequestMapping(method = RequestMethod.GET, value="/{oid}")
+    @CrossOrigin("*")
     public Team findById( @PathVariable("oid") Integer oid ){
         return service.getById(oid);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}")
+    @CrossOrigin("*")
     public Team findByNameURL( @PathVariable("name") String name ){
         return service.findByName(name);
     }
 
 
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}/players")
+    @CrossOrigin("*")
     public List<Player> findPlayersByNameURL( @PathVariable("name") String name ){
         return service.findPlayersByName(name);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}/championships")
+    @CrossOrigin("*")
     public  List<Championship> findChampionshipsByNameURL(@PathVariable("name") String name ){
         return service.findChampionshipsByName(name);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}/standings")
+    @CrossOrigin("*")
     public  List<List<ChampionshipTeam>> findStandingsByNameURL(@PathVariable("name") String name ){
         return service.findStandingsByName(name);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}/matches")
+    @CrossOrigin("*")
     public List<Match> findMatchesByNameURL(@PathVariable("name") String name ){
         return service.findMatchesByName(name);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}/last-match")
+    @CrossOrigin("*")
     public Match findLastMatch(@PathVariable("name") String name ){
         return service.findLastMatch(name);
     }

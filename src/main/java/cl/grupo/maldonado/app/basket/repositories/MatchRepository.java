@@ -39,4 +39,16 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
             "order by m.date desc" )
     List<Match> findLastByTeam(@Param("team")Team team,
                                @Param("state")MatchState state );
+
+    @Query( "SELECT sum(scoreLocal) / count(*) " +
+            "FROM tbl_match " +
+            "WHERE local =:team")
+    Integer scoreLocal(@Param("team")Team team);
+
+    @Query( "SELECT sum(scoreVisitor) / count(*) " +
+            "FROM tbl_match " +
+            "WHERE visitor =:team")
+    Integer scoreVisitor(@Param("team")Team team);
+
+
 }

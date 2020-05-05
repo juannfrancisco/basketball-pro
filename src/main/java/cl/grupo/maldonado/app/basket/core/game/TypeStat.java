@@ -15,6 +15,7 @@ public enum TypeStat {
     PTS, //Point
     MPT, //Missing Point
 
-    PF   //Personal Foul
+    PF,   //Personal Foul
+    T_PTS  // Three Points
 
 }

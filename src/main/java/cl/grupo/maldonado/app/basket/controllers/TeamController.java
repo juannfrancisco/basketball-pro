@@ -2,6 +2,7 @@ package cl.grupo.maldonado.app.basket.controllers;
 
 import cl.grupo.maldonado.app.basket.core.Player;
 import cl.grupo.maldonado.app.basket.core.Team;
+import cl.grupo.maldonado.app.basket.core.TeamStatistics;
 import cl.grupo.maldonado.app.basket.core.championship.Championship;
 import cl.grupo.maldonado.app.basket.core.championship.ChampionshipTeam;
 import cl.grupo.maldonado.app.basket.core.game.Match;
@@ -58,9 +59,15 @@ public class TeamController {
         return service.findChampionshipsByName(name);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/n/{name}/standingsL")
+    @CrossOrigin("*")
+    public  List<List<ChampionshipTeam>> findAllStandingsByNameURL(@PathVariable("name") String name ){
+        return service.findAllStandingsByName(name);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value="/n/{name}/standings")
     @CrossOrigin("*")
-    public  List<List<ChampionshipTeam>> findStandingsByNameURL(@PathVariable("name") String name ){
+    public List<ChampionshipTeam> findStandingsByNameURL(@PathVariable("name") String name ){
         return service.findStandingsByName(name);
     }
 
@@ -74,6 +81,12 @@ public class TeamController {
     @CrossOrigin("*")
     public Match findLastMatch(@PathVariable("name") String name ){
         return service.findLastMatch(name);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/n/{name}/statistics")
+    @CrossOrigin("*")
+    public TeamStatistics findStatisticsLastSeason(@PathVariable("name") String name ){
+        return service.findStatisticsLastSeason(name);
     }
 
 

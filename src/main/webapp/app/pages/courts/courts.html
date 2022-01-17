@@ -63,12 +63,12 @@
                </div>
            </div>
            
-			<div class="col-md-12" ng-if="!flagLoading && courts.length == 0">
+			<div class="col-md-12" *ngIf="!flagLoading && courts.length == 0">
       			<strong ng-show="!flagErrorLoading">No existen canchas, presione el boton "nuevo" para agregar...</strong>
 			</div>
 			
 			
-			<div class="col-md-12 mb20 mt20" ng-show="flagErrorLoading" style="text-align: center;">
+			<div class="col-md-12 mb20 mt20" *ngIf="!flagErrorLoading" style="text-align: center;">
       			<strong style="color:gray;">Ocurrio un error al cargar la información, intente más tarde</strong>
       			<div><i style="font-size:100px;color: #EBEBEB;" class=" ico-heart-broken mb20 mt20"  ></i></div>
 			</div>

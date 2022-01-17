@@ -17,15 +17,36 @@
 package cl.grupo.maldonado.app.basket.core.game;
 
 
+import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
+@Entity
 public class League {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String name;
 //	private List<Match> games;
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 
 	/**
 	 * @return the name

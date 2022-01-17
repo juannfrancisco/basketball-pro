@@ -36,7 +36,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-gcp-dependencies</artifactId>
-                <version>1.0.0.RC1</version>
+                <version>1.2.2.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -72,12 +72,16 @@
             <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
         </dependency>
 
-        <!--
-            <dependency>
-              <groupId>org.springframework.cloud</groupId>
-              <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-            </dependency>
-        -->
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-gcp-starter-data-firestore</artifactId>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-gcp-data-datastore</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -101,6 +105,7 @@
             <artifactId>appengine-api-1.0-sdk</artifactId>
             <version>1.9.71</version>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -108,14 +113,12 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
-
-
 
         <!-- Test Dependencies -->
         <dependency>
@@ -124,6 +127,7 @@
             <version>1.9.71</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-stubs</artifactId>
@@ -151,6 +155,7 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
